@@ -1,4 +1,4 @@
-package com.grupo1.myevent;
+package vista;
 
 import javax.servlet.annotation.WebServlet;
 

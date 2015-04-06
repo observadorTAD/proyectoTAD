@@ -77,6 +77,12 @@
 			<artifactId>vaadin-themes</artifactId>
 			<version>${vaadin.version}</version>
 		</dependency>
+	 <dependency>
+	  <groupId>com.vaadin</groupId>
+	  <artifactId>vaadin</artifactId>
+	  <version>7.0-SNAPSHOT</version>
+	  <type>jar</type>
+	 </dependency>
 	</dependencies>
 
 	<build>

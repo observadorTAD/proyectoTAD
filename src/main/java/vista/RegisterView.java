@@ -18,7 +18,7 @@ import com.vaadin.ui.VerticalLayout;
  */
 @Theme("mytheme")
 @Widgetset("com.grupo1.myevent.MyEventWidgetset")
-public class Register extends UI {
+public class RegisterView extends UI {
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
@@ -37,8 +37,8 @@ public class Register extends UI {
 
     }
 
-    @WebServlet(value = {"/Register/*"}, name = "RegisterServlet", asyncSupported = true)
-    @VaadinServletConfiguration(ui = Register.class, productionMode = false)
-    public static class MyEventServlet extends VaadinServlet {
+    @WebServlet(value = {"/registro/*"}, name = "registro", asyncSupported = true)
+    @VaadinServletConfiguration(ui = RegisterView.class, productionMode = false)
+    public static class Servlet extends VaadinServlet {
     }
 }

@@ -17,7 +17,7 @@ import com.vaadin.ui.VerticalLayout;
  *
  */
 @Theme("mytheme")
-@Widgetset("com.grupo1.myevent.MyEventWidgetset")
+@Widgetset("com.grupo1.eventprueba.MyAppWidgetset")
 public class RegisterView extends UI {
 
     @Override

@@ -5,6 +5,7 @@
  */
 package modelo;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -15,11 +16,12 @@ public class Evento {
     private String titulo;
     private String descripcion;
     private String lugar;
+    private Date fecha;
     private List<Persona> usuarios;
     private Artista artista;
     private float precio;
 
-    public Evento(String titulo, String descripcion, String lugar, List<Persona> usuarios, 
+    public Evento(String titulo, String descripcion, String lugar, Date fecha, List<Persona> usuarios, 
             Artista artista, float precio) {
         this.titulo = titulo;
         this.descripcion = descripcion;
@@ -27,6 +29,7 @@ public class Evento {
         this.usuarios = usuarios;
         this.artista = artista;
         this.precio = precio;
+        this.fecha = fecha;
     }
     
 }

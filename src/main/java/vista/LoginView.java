@@ -55,14 +55,13 @@ public class LoginView extends VerticalLayout implements View {
 
         loginPanel.setContent(loginForm);
         addComponent(loginPanel);
+        
         setSizeFull();
-        setMargin(true);
         loginPanel.setWidth("50%");
         setComponentAlignment(loginPanel, Alignment.MIDDLE_CENTER);
     }
 
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent event) {
-        Notification.show("Login");
     }
 }

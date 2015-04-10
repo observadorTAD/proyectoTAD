@@ -11,14 +11,14 @@ import java.util.List;
  *
  * @author racede
  */
-public class Usuario extends Persona{
+public class Usuario extends Persona {
+
     private List<Evento> eventos;
 
-    public Usuario(List<Evento> eventos, String email, String password, 
-            String usuario, String nombre, String apellidos) {
-        super(email, password, usuario, nombre, apellidos);
+    public Usuario(List<Evento> eventos, String email, String password,
+            String nombre, String apellidos) {
+        super(email, password, nombre, apellidos);
         this.eventos = eventos;
     }
-    
-    
+
 }

@@ -12,15 +12,13 @@ package modelo;
 public class Persona {
     private String email;
     private String password;
-    private String usuario;
     private String nombre;
     private String apellidos;
 
-    public Persona(String email, String password, String usuario, String nombre,
+    public Persona(String email, String password, String nombre,
             String apellidos) {
         this.email = email;
         this.password = password;
-        this.usuario = usuario;
         this.nombre = nombre;
         this.apellidos = apellidos;
     }

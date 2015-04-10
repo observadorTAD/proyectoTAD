@@ -5,11 +5,9 @@ import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.shared.ui.label.ContentMode;
 import com.vaadin.ui.Accordion;
-import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.HorizontalSplitPanel;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Layout;
-import com.vaadin.ui.Panel;
 import com.vaadin.ui.TabSheet;
 import com.vaadin.ui.TabSheet.SelectedTabChangeEvent;
 import com.vaadin.ui.VerticalLayout;
@@ -18,7 +16,6 @@ public class MainView extends VerticalLayout implements View {
 
     public static final String NAME = "main";
     private final HorizontalSplitPanel menuContent = new HorizontalSplitPanel();
-    private final Panel mainPanel = new Panel();
     private final Accordion nav = new Accordion();
     private final boolean artista = true;
 
@@ -40,6 +37,7 @@ public class MainView extends VerticalLayout implements View {
                                 menuContent.setSecondComponent(new CreateEventView());
                                 break;
                             case "Editar datos":
+                                menuContent.setSecondComponent(new EditDataView());
                                 break;
                             case "Logout":
                                 navigator.navigateTo(LoginView.NAME);

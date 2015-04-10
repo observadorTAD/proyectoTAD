@@ -9,15 +9,16 @@ package modelo;
  *
  * @author racede
  */
-public class Artista extends Persona{
+public class Artista extends Persona {
+
     private String nombreArtistico;
     private String descripcion;
 
-    public Artista(String nombreArtistico, String descripcion, String email, 
-            String password, String usuario, String nombre, String apellidos) {
-        super(email, password, usuario, nombre, apellidos);
+    public Artista(String nombreArtistico, String descripcion, String email,
+            String password, String nombre, String apellidos) {
+        super(email, password, nombre, apellidos);
         this.nombreArtistico = nombreArtistico;
         this.descripcion = descripcion;
     }
-    
+
 }

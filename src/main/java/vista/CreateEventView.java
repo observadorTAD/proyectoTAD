@@ -2,7 +2,6 @@ package vista;
 
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
-import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.DateField;
 import com.vaadin.ui.FormLayout;
@@ -11,8 +10,6 @@ import com.vaadin.ui.TextArea;
 import com.vaadin.ui.TextField;
 
 public class CreateEventView extends FormLayout implements View {
-
-    public static final String NAME = "createEvent";
 
     private final TextField titulo = new TextField("Título del evento");
     private final TextArea descripcion = new TextArea("Descripción del evento");
@@ -24,6 +21,13 @@ public class CreateEventView extends FormLayout implements View {
     public CreateEventView() {
         boolean artista = true;
         if (artista) {
+            crear.addClickListener(new Button.ClickListener() {
+
+                @Override
+                public void buttonClick(Button.ClickEvent event) {
+                    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                }
+            });
             addComponent(titulo);
             addComponent(lugar);
             addComponent(fecha);

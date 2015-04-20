@@ -61,7 +61,8 @@ public class MainView extends VerticalLayout implements View {
         
         addComponent(new Label("<h1>MyEvent</h1>", ContentMode.HTML));
         addComponent(menuContent);
-        addComponent(new Label("<h3>Footer</h3>", ContentMode.HTML));
+        addComponent(new Label("<h3>MyEvent. Grupo 1 TAD. Universidad Pablo de "
+                + "Olvaide</h3>", ContentMode.HTML));
 
     }
 

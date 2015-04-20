@@ -16,6 +16,7 @@ import com.vaadin.ui.Panel;
 import com.vaadin.ui.PasswordField;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
+import modelo.DAO.MongoDBJDBC;
 
 public class RegisterView extends VerticalLayout implements View {
 
@@ -28,6 +29,7 @@ public class RegisterView extends VerticalLayout implements View {
     private final PasswordField passwordConf = new PasswordField("Confirmar contraseña");
     private final TextField nombre = new TextField("Nombre");
     private final TextField apellidos = new TextField("Apellidos");
+    private final TextField nombreUsuario = new TextField("Nombre de usuario");
     private final Label cabecera = new Label(); //editar
 
     private final Button registrarse = new Button("Registrarse");
@@ -40,7 +42,10 @@ public class RegisterView extends VerticalLayout implements View {
             public void buttonClick(ClickEvent event
             ) {
                 //Guardar base datos
-                navigator.navigateTo(MainView.NAME);
+                MongoDBJDBC dao = new MongoDBJDBC();
+                dao.crearNuevoUsuario(correo.getValue(), password.getValue(), nombre.getValue(), 
+                        apellidos.getValue(), nombreUsuario.getValue());
+                navigator.navigateTo(LoginView.NAME);
             }
         });
         volver.addClickListener(new Button.ClickListener() {
@@ -53,6 +58,7 @@ public class RegisterView extends VerticalLayout implements View {
         loginForm.addComponent(correo);
         loginForm.addComponent(password);
         loginForm.addComponent(passwordConf);
+        loginForm.addComponent(nombreUsuario);
         loginForm.addComponent(nombre);
         loginForm.addComponent(apellidos);
 

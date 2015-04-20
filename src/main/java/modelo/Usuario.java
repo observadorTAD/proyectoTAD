@@ -14,11 +14,13 @@ import java.util.List;
 public class Usuario extends Persona {
 
     private List<Evento> eventos;
+    private String usuario;
 
-    public Usuario(List<Evento> eventos, String email, String password,
+    public Usuario(String usuario, List<Evento> eventos, String email, String password,
             String nombre, String apellidos) {
         super(email, password, nombre, apellidos);
         this.eventos = eventos;
+        this.usuario = usuario;
     }
 
 }

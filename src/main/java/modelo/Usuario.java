@@ -1,21 +1,24 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modelo;
 
 import java.util.List;
 
 /**
- *
- * @author racede
+ * Esta clase contine los métodos y atributos que pertenecen a la entidad Usuario
  */
 public class Usuario extends Persona {
 
     private List<Evento> eventos;
     private String usuario;
 
+    /**
+     * Consctructor que crea un objeto de tipo usuario
+     * @param usuario
+     * @param eventos
+     * @param email
+     * @param password
+     * @param nombre
+     * @param apellidos 
+     */
     public Usuario(String usuario, List<Evento> eventos, String email, String password,
             String nombre, String apellidos) {
         super(email, password, nombre, apellidos);

@@ -1,16 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modelo;
 
 import java.util.Date;
 import java.util.List;
 
 /**
- *
- * @author racede
+ * Esta clase contine los métodos y atributos que pertenecen a la entidad Evento
  */
 public class Evento {
     private String titulo;
@@ -21,6 +15,16 @@ public class Evento {
     private Artista artista;
     private float precio;
 
+    /**
+     * Constructor que sirve para crear un objeto de tipo evento.
+     * @param titulo
+     * @param descripcion
+     * @param lugar
+     * @param fecha
+     * @param usuarios
+     * @param artista
+     * @param precio 
+     */
     public Evento(String titulo, String descripcion, String lugar, Date fecha, List<Persona> usuarios, 
             Artista artista, float precio) {
         this.titulo = titulo;

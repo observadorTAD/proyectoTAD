@@ -1,0 +1,61 @@
+com.grupo1:MyEvent:war:1.0-SNAPSHOT
++- javax.servlet:javax.servlet-api:jar:3.0.1:provided
++- com.vaadin:vaadin-server:jar:7.4.1:compile
+|  +- com.vaadin:vaadin-sass-compiler:jar:0.9.12:compile
+|  |  \- com.vaadin.external.flute:flute:jar:1.3.0.gg2:compile
+|  +- com.vaadin:vaadin-shared:jar:7.4.1:compile
+|  |  +- com.vaadin.external.streamhtmlparser:streamhtmlparser-jsilver:jar:0.0.10.vaadin1:compile
+|  |  \- com.vaadin.external.google:guava:jar:16.0.1.vaadin1:compile
+|  \- org.jsoup:jsoup:jar:1.8.1:compile
++- com.vaadin:vaadin-push:jar:7.4.1:compile
+|  \- com.vaadin.external.atmosphere:atmosphere-runtime:jar:2.2.4.vaadin4:compile
+|     \- com.vaadin.external.slf4j:vaadin-slf4j-jdk14:jar:1.6.1:compile
++- com.vaadin:vaadin-client:jar:7.4.1:provided
+|  +- org.w3c.css:sac:jar:1.3:compile
+|  +- javax.validation:validation-api:jar:1.0.0.GA:provided
+|  \- javax.validation:validation-api:jar:sources:1.0.0.GA:provided
++- com.vaadin:vaadin-client-compiler:jar:7.4.1:provided
+|  +- commons-collections:commons-collections:jar:3.1:provided
+|  +- commons-logging:commons-logging:jar:1.1.3:provided
+|  +- ant:ant:jar:1.6.5:provided
+|  +- net.sourceforge.cssparser:cssparser:jar:0.9.11:provided
+|  +- ant:ant-launcher:jar:1.6.5:provided
+|  +- org.ow2.asm:asm:jar:5.0.3:provided
+|  +- org.ow2.asm:asm-util:jar:5.0.3:provided
+|  |  \- org.ow2.asm:asm-tree:jar:5.0.3:provided
+|  +- org.ow2.asm:asm-commons:jar:5.0.3:provided
+|  +- org.eclipse.jetty:jetty-annotations:jar:8.1.12.v20130726:provided
+|  |  +- org.eclipse.jetty:jetty-plus:jar:8.1.12.v20130726:provided
+|  |  |  +- org.eclipse.jetty.orbit:javax.transaction:jar:1.1.1.v201105210645:provided
+|  |  |  \- org.eclipse.jetty:jetty-jndi:jar:8.1.12.v20130726:provided
+|  |  |     +- org.eclipse.jetty:jetty-server:jar:8.1.12.v20130726:provided
+|  |  |     |  \- org.eclipse.jetty.orbit:javax.servlet:jar:3.0.0.v201112011016:provided
+|  |  |     \- org.eclipse.jetty.orbit:javax.mail.glassfish:jar:1.4.1.v201005082020:provided
+|  |  |        \- org.eclipse.jetty.orbit:javax.activation:jar:1.1.0.v201105071233:provided
+|  |  +- org.eclipse.jetty:jetty-webapp:jar:8.1.12.v20130726:provided
+|  |  |  +- org.eclipse.jetty:jetty-xml:jar:8.1.12.v20130726:provided
+|  |  |  \- org.eclipse.jetty:jetty-servlet:jar:8.1.12.v20130726:provided
+|  |  |     \- org.eclipse.jetty:jetty-security:jar:8.1.12.v20130726:provided
+|  |  +- org.eclipse.jetty.orbit:javax.annotation:jar:1.1.0.v201108011116:provided
+|  |  \- org.eclipse.jetty.orbit:org.objectweb.asm:jar:3.1.0.v200803061910:provided
+|  +- org.eclipse.jetty:jetty-servlets:jar:8.1.12.v20130726:provided
+|  |  +- org.eclipse.jetty:jetty-continuation:jar:8.1.12.v20130726:provided
+|  |  \- org.eclipse.jetty:jetty-client:jar:8.1.12.v20130726:provided
+|  |     \- org.eclipse.jetty:jetty-http:jar:8.1.12.v20130726:provided
+|  |        \- org.eclipse.jetty:jetty-io:jar:8.1.12.v20130726:provided
+|  +- org.eclipse.jetty:jetty-util:jar:8.1.12.v20130726:provided
+|  +- org.jdesktop:swing-worker:jar:1.1:provided
+|  +- commons-codec:commons-codec:jar:1.8:provided
+|  +- commons-io:commons-io:jar:2.4:provided
+|  +- org.apache.commons:commons-lang3:jar:3.1:provided
+|  +- org.apache.james:apache-mime4j:jar:0.6:provided
+|  +- org.apache.httpcomponents:httpclient:jar:4.3.1:provided
+|  +- org.apache.httpcomponents:httpcore:jar:4.3:provided
+|  +- org.apache.httpcomponents:httpmime:jar:4.3.1:provided
+|  +- net.sourceforge.nekohtml:nekohtml:jar:1.9.19:provided
+|  +- xalan:serializer:jar:2.7.1:provided
+|  +- xerces:xercesImpl:jar:2.11.0:provided
+|  +- xml-apis:xml-apis:jar:1.4.01:provided
+|  +- com.ibm.icu:icu4j:jar:50.1.1:provided
+|  \- com.vaadin:vaadin-client-compiler-deps:jar:1.2.0:provided
+\- com.vaadin:vaadin-themes:jar:7.4.1:compile

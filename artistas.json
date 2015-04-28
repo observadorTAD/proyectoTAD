@@ -1,0 +1,8 @@
+{ 
+    "_id" : "artista@upo.es", 
+    "password" : "artista", 
+    "nombre" : "UPO", 
+    "apellidos" : "apellidos", 
+    "nombreArtistico" : "Upoland", 
+    "descripcion" : "soy la polla"
+}

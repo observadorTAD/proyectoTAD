@@ -1,0 +1,22 @@
+{ 
+    "_id" : ObjectId("5535298f20c981a51549418a"), 
+    "titulo" : "EventoPrueba", 
+    "descripcion" : "evento de prueba", 
+    "lugar" : "UPO", 
+    "fecha" : ISODate("2015-06-26T22:00:00.000+0000"), 
+    "artista" : {
+        "correo" : "artista@upo.es", 
+        "nombreArtistico" : "Upoland"
+    }, 
+    "precio" : 5.0, 
+    "usuario" : [
+        {
+            "correo" : "correo", 
+            "nombreUsuario" : "upo"
+        }, 
+        {
+            "correo" : "correo2", 
+            "nombreUsuario" : "upo2"
+        }
+    ]
+}

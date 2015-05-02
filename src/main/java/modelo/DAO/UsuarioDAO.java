@@ -16,10 +16,11 @@ import modelo.entidades.Usuario;
  */
 public class UsuarioDAO {
 
-    private MongoDBJDBC jdbc;
-    private DBCollection coll;
+    private final MongoDBJDBC jdbc;
+    private final DBCollection coll;
 
     public UsuarioDAO() {
+        jdbc = new MongoDBJDBC();
         this.coll = jdbc.getCollection("usuarios");
     }
 

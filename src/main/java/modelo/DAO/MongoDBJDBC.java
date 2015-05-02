@@ -1,4 +1,3 @@
-
 package modelo.DAO;
 
 /**
@@ -22,12 +21,13 @@ public class MongoDBJDBC {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
         }
     }
-    public DBCollection getCollection(String collection){
+
+    public DBCollection getCollection(String collection) {
         DBCollection coll = null;
-        if(!db.collectionExists(collection)){
-            coll = db.createCollection(collection, null);
-        } else {
+        if (db.collectionExists(collection)) {
             coll = db.getCollection(collection);
+        } else {
+            coll = db.createCollection(collection, null);
         }
         return coll;
     }

@@ -13,7 +13,7 @@ import modelo.entidades.Usuario;
  * @author Alberto Lo
  */
 public class UsuarioController {
-    private UsuarioDAO usuarioDAO;
+    private final UsuarioDAO usuarioDAO;
     
     public UsuarioController(){
         usuarioDAO = new UsuarioDAO();

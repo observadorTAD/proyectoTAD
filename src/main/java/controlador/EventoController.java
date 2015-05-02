@@ -5,10 +5,16 @@
  */
 package controlador;
 
+import modelo.DAO.EventoDAO;
+
 /**
  *
  * @author Alberto Lo
  */
 public class EventoController {
+    private final EventoDAO eventoDAO;
     
+    public EventoController(){
+        eventoDAO = new EventoDAO();
+    }
 }

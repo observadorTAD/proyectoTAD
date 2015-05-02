@@ -1,5 +1,6 @@
 package vista;
 
+import com.vaadin.data.validator.EmailValidator;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
@@ -61,6 +62,7 @@ public class RegisterView extends VerticalLayout implements View {
             }
         }
         );
+        correo.addValidator(new EmailValidator("Introduzca un correo válido"));
         loginForm.addComponent(correo);
         loginForm.addComponent(password);
         loginForm.addComponent(passwordConf);

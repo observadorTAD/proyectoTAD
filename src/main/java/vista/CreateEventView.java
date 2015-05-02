@@ -28,8 +28,14 @@ public class CreateEventView extends FormLayout implements View {
                     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
                 }
             });
+            titulo.setRequired(true);
+            titulo.setRequiredError("Es obligatorio tener un título");
             addComponent(titulo);
+            lugar.setRequired(true);
+            lugar.setRequiredError("Es obligatorio indicar una localización");
             addComponent(lugar);
+            fecha.setRequired(true);
+            fecha.setRequiredError("Es obligatorio tener una fecha");
             addComponent(fecha);
             addComponent(precio);
             addComponent(descripcion);

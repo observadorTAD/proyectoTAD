@@ -5,7 +5,10 @@
  */
 package controlador;
 
+import java.util.Date;
 import modelo.DAO.EventoDAO;
+import modelo.entidades.Artista;
+import modelo.entidades.Evento;
 
 /**
  *
@@ -13,8 +16,14 @@ import modelo.DAO.EventoDAO;
  */
 public class EventoController {
     private final EventoDAO eventoDAO;
+    private ArtistaController artistaController = new ArtistaController();
     
     public EventoController(){
         eventoDAO = new EventoDAO();
+    }
+    
+    public void crearEvento(String titulo, String lugar, Date fecha, String precio, String descripcion, String artista){
+        
+        Evento evento = new Evento(titulo, descripcion, lugar, fecha, null, artistaController.isArtista(artista), Float.parseFloat(precio));
     }
 }

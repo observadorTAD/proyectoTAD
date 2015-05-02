@@ -8,6 +8,8 @@ import com.vaadin.ui.FormLayout;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.TextArea;
 import com.vaadin.ui.TextField;
+import controlador.EventoController;
+import modelo.entidades.Artista;
 
 public class CreateEventView extends FormLayout implements View {
 
@@ -17,6 +19,7 @@ public class CreateEventView extends FormLayout implements View {
     private final TextField precio = new TextField("Precio del evento"); //Validar
     private final DateField fecha = new DateField("Fecha del evento");
     private final Button crear = new Button("Crear Evento");
+    private EventoController eventoController = new EventoController();
 
     public CreateEventView() {
         boolean artista = true;
@@ -25,7 +28,8 @@ public class CreateEventView extends FormLayout implements View {
 
                 @Override
                 public void buttonClick(Button.ClickEvent event) {
-                    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                    String artista = "holita";
+                    eventoController.crearEvento(titulo.getValue(), lugar.getValue(), fecha.getValue(), precio.getValue(),artista, descripcion.getValue());
                 }
             });
             titulo.setRequired(true);

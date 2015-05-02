@@ -44,9 +44,14 @@ public class RegisterView extends VerticalLayout implements View {
             public void buttonClick(ClickEvent event
             ) {
                 //Guardar base datos
+                try{
                 usuarioController.crearNuevoUsuario(correo.getValue(), password.getValue(), nombre.getValue(), 
                         apellidos.getValue(), nombreUsuario.getValue());
                 navigator.navigateTo(LoginView.NAME);
+                } catch(Exception e){
+                    Notification.show("Error registro", "Ya existe ese correo. Utilice otro correo para registrarse",
+                            Notification.Type.ERROR_MESSAGE);
+                }
             }
         });
         volver.addClickListener(new Button.ClickListener() {

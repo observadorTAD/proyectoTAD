@@ -19,7 +19,7 @@ public class UsuarioController {
         usuarioDAO = new UsuarioDAO();
     }
     public void crearNuevoUsuario(String correo, String password, String nombre, String apellidos, String nombreUsuario){
-        Usuario usuario = new Usuario(correo, null, nombre, password, nombre, apellidos);
+        Usuario usuario = new Usuario(nombreUsuario, null, correo, password, nombre, apellidos);
         usuarioDAO.crearNuevoUsuario(usuario);
     }
 }

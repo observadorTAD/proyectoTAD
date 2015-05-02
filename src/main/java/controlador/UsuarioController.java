@@ -33,4 +33,5 @@ public class UsuarioController {
         return new String(md.digest(output.getBytes()));
     }
     
+    
 }

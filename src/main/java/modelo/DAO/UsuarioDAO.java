@@ -30,7 +30,7 @@ public class UsuarioDAO {
                 .append("nombre", usuario.getNombre())
                 .append("apellidos", usuario.getApellidos())
                 .append("nombreUsuario", usuario.getNombreUsuario())
-                .append("evetnos", new BasicDBList());
+                .append("eventos", new BasicDBList());
         coll.insert(doc);
     }
     

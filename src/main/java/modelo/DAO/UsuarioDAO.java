@@ -33,4 +33,5 @@ public class UsuarioDAO {
                 .append("evetnos", new BasicDBList());
         coll.insert(doc);
     }
+    
 }

@@ -18,7 +18,6 @@ import com.vaadin.ui.PasswordField;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
 import controlador.UsuarioController;
-import modelo.DAO.MongoDBJDBC;
 
 public class RegisterView extends VerticalLayout implements View {
 
@@ -49,6 +48,8 @@ public class RegisterView extends VerticalLayout implements View {
                 usuarioController.crearNuevoUsuario(correo.getValue(), password.getValue(), nombre.getValue(), 
                         apellidos.getValue(), nombreUsuario.getValue());
                 navigator.navigateTo(LoginView.NAME);
+                Notification.show("¡Enhorabuena!", "Se ha registrado con éxito",
+                            Notification.Type.HUMANIZED_MESSAGE);
                 } catch(Exception e){
                     Notification.show("Error registro", "Ya existe ese correo. Utilice otro correo para registrarse",
                             Notification.Type.ERROR_MESSAGE);
@@ -62,6 +63,11 @@ public class RegisterView extends VerticalLayout implements View {
             }
         }
         );
+        correo.setRequired(true);
+        password.setRequired(true);
+        passwordConf.setRequired(true);
+        nombreUsuario.setRequired(true);
+        
         correo.addValidator(new EmailValidator("Introduzca un correo válido"));
         loginForm.addComponent(correo);
         loginForm.addComponent(password);

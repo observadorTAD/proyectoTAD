@@ -63,7 +63,9 @@ public class RegisterView extends VerticalLayout implements View {
             }
         }
         );
+        correo.addValidator(new EmailValidator("Introduzca un correo"));
         correo.setRequired(true);
+       
         password.setRequired(true);
         passwordConf.setRequired(true);
         nombreUsuario.setRequired(true);

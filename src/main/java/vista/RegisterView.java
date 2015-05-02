@@ -68,7 +68,6 @@ public class RegisterView extends VerticalLayout implements View {
         passwordConf.setRequired(true);
         nombreUsuario.setRequired(true);
         
-        correo.addValidator(new EmailValidator("Introduzca un correo válido"));
         loginForm.addComponent(correo);
         loginForm.addComponent(password);
         loginForm.addComponent(passwordConf);

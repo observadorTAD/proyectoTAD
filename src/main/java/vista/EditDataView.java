@@ -21,7 +21,7 @@ public class EditDataView extends FormLayout implements View {
 
             @Override
             public void buttonClick(Button.ClickEvent event) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                
             }
         });
         addComponent(password);

@@ -5,8 +5,10 @@
  */
 package modelo.DAO;
 
+import com.mongodb.BasicDBList;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
+import modelo.entidades.Usuario;
 
 /**
  *
@@ -14,18 +16,20 @@ import com.mongodb.DBCollection;
  */
 public class UsuarioDAO {
 
+    private MongoDBJDBC jdbc;
     private DBCollection coll;
 
-    public UsuarioDAO(DBCollection coll) {
-        this.coll = coll;
+    public UsuarioDAO() {
+        this.coll = jdbc.getCollection("usuarios");
     }
 
-    public void crearNuevoUsuario(String correo, String password, String nombre, String apellidos, String nombreUsuario) {
-        BasicDBObject doc = new BasicDBObject("_id", correo)
-                .append("password", password)
-                .append("nombre", nombre)
-                .append("apellidos", apellidos)
-                .append("nombreUsuario", nombreUsuario);
+    public void crearNuevoUsuario(Usuario usuario) {
+        BasicDBObject doc = new BasicDBObject("_id", usuario.getEmail())
+                .append("password", usuario.getPassword())
+                .append("nombre", usuario.getNombre())
+                .append("apellidos", usuario.getApellidos())
+                .append("nombreUsuario", usuario.getNombreUsuario())
+                .append("evetnos", new BasicDBList());
         coll.insert(doc);
     }
 }

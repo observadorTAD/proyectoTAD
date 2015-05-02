@@ -5,10 +5,21 @@
  */
 package controlador;
 
+import modelo.DAO.UsuarioDAO;
+import modelo.entidades.Usuario;
+
 /**
  *
  * @author Alberto Lo
  */
 public class UsuarioController {
+    private UsuarioDAO usuarioDAO;
     
+    public UsuarioController(){
+        usuarioDAO = new UsuarioDAO();
+    }
+    public void crearNuevoUsuario(String correo, String password, String nombre, String apellidos, String nombreUsuario){
+        Usuario usuario = new Usuario(correo, null, nombre, password, nombre, apellidos);
+        usuarioDAO.crearNuevoUsuario(usuario);
+    }
 }

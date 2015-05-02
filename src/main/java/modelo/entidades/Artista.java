@@ -1,4 +1,4 @@
-package modelo;
+package modelo.entidades;
 
 /**
  * Esta clase contine los métodos y atributos que pertenecen a la entidad Artista

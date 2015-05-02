@@ -1,4 +1,4 @@
-package modelo;
+package modelo.entidades;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import java.util.List;
 public class Usuario extends Persona {
 
     private List<Evento> eventos;
-    private String usuario;
+    private String nombreUsuario;
 
     /**
      * Consctructor que crea un objeto de tipo usuario
@@ -23,7 +23,16 @@ public class Usuario extends Persona {
             String nombre, String apellidos) {
         super(email, password, nombre, apellidos);
         this.eventos = eventos;
-        this.usuario = usuario;
+        this.nombreUsuario = usuario;
     }
+
+    public List<Evento> getEventos() {
+        return eventos;
+    }
+
+    public String getNombreUsuario() {
+        return nombreUsuario;
+    }
+    
 
 }

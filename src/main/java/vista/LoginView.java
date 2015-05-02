@@ -3,6 +3,7 @@ package vista;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
+import com.vaadin.server.WrappedSession;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
@@ -37,6 +38,7 @@ public class LoginView extends VerticalLayout implements View {
         loginButton.addClickListener(new Button.ClickListener() {
             @Override
             public void buttonClick(ClickEvent event) {
+                
                 navigator.navigateTo(MainView.NAME);
             }
         }

@@ -8,9 +8,8 @@ import com.vaadin.annotations.Widgetset;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
-import com.vaadin.ui.Label;
+import com.vaadin.server.WrappedSession;
 import com.vaadin.ui.UI;
-import com.vaadin.ui.VerticalLayout;
 
 /**
  *
@@ -25,10 +24,11 @@ public class MyEventUI extends UI {
         navigator.addView(LoginView.NAME, new LoginView(navigator));
         navigator.addView(RegisterView.NAME, new RegisterView(navigator));
         navigator.addView(MainView.NAME, new MainView(navigator));
-    }
+        WrappedSession session = getSession().getSession();
 
+    }
     @WebServlet(value = {"/myevent/*","/*"}, name = "MyEventServlet", asyncSupported = true)
-    @VaadinServletConfiguration(ui = MyEventUI.class, productionMode = false)
+    @VaadinServletConfiguration(ui = MyEventUI.class, productionMode = false,heartbeatInterval=10,closeIdleSessions=true)
     public static class MyEventServlet extends VaadinServlet {
     }
 }

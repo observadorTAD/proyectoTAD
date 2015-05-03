@@ -16,6 +16,7 @@ import com.vaadin.ui.Notification;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.PasswordField;
 import com.vaadin.ui.TextField;
+import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 import controlador.UsuarioController;
 
@@ -37,7 +38,7 @@ public class RegisterView extends VerticalLayout implements View {
     private final Button registrarse = new Button("Registrarse");
     private final Button volver = new Button("Volver");
 
-    public RegisterView(final Navigator navigator) {
+    public RegisterView() {
 
         registrarse.addClickListener(new ClickListener() {
             @Override
@@ -48,15 +49,16 @@ public class RegisterView extends VerticalLayout implements View {
                     if (correo.isValid() && password.getValue().equals(passwordConf.getValue())) {
                         usuarioController.crearNuevoUsuario(correo.getValue(), password.getValue(), nombre.getValue(),
                                 apellidos.getValue(), nombreUsuario.getValue());
-                        navigator.navigateTo(LoginView.NAME);
-                        Notification.show("¡Enhorabuena!", "Se ha registrado con éxito",
+                        UI.getCurrent().getNavigator().navigateTo(LoginView.NAME);
+                        Notification.show("Se ha registrado con éxito",
                                 Notification.Type.HUMANIZED_MESSAGE);
                     } else {
                         Notification.show("Campos inválidos", "Compruebe si el correo es válido o si las contraseñas coinciden.",
                             Notification.Type.ERROR_MESSAGE);
                     }
                 } catch (Exception e) {
-                    Notification.show("Error registro", "Ya existe ese correo. Utilice otro correo para registrarse",
+                    Notification.show("Error de registro", "Ya existe ese correo. "
+                            + "Utilice otro correo para registrarse",
                             Notification.Type.ERROR_MESSAGE);
                 }
             }
@@ -64,7 +66,7 @@ public class RegisterView extends VerticalLayout implements View {
         volver.addClickListener(new Button.ClickListener() {
             @Override
             public void buttonClick(ClickEvent event) {
-                navigator.navigateTo(LoginView.NAME);
+                UI.getCurrent().getNavigator().navigateTo(LoginView.NAME);
             }
         }
         );

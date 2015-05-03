@@ -3,11 +3,12 @@ package modelo.entidades;
 import java.util.List;
 
 /**
- * Esta clase contine los métodos y atributos que pertenecen a la entidad Usuario
+ * Esta clase contine los métodos y atributos que pertenecen a la entidad
+ * Usuario
  */
 public class Usuario {
 
-    private final String email;
+    private final String correo;
     private final String password;
     private final String nombre;
     private final String apellidos;
@@ -16,16 +17,17 @@ public class Usuario {
 
     /**
      * Consctructor que crea un objeto de tipo usuario
+     *
      * @param nombreUsuario
      * @param eventos
-     * @param email
+     * @param correo
      * @param password
      * @param nombre
-     * @param apellidos 
+     * @param apellidos
      */
-    public Usuario(String nombreUsuario, List<Evento> eventos, String email, String password,
+    public Usuario(String nombreUsuario, List<Evento> eventos, String correo, String password,
             String nombre, String apellidos) {
-        this.email = email;
+        this.correo = correo;
         this.password = password;
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -40,8 +42,9 @@ public class Usuario {
     public String getNombreUsuario() {
         return nombreUsuario;
     }
-        public String getEmail() {
-        return email;
+
+    public String getCorreo() {
+        return correo;
     }
 
     public String getPassword() {
@@ -55,5 +58,4 @@ public class Usuario {
     public String getApellidos() {
         return apellidos;
     }
-
 }

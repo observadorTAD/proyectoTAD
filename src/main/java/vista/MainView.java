@@ -1,8 +1,10 @@
 package vista;
 
-import com.vaadin.navigator.Navigator;
+import com.vaadin.annotations.PreserveOnRefresh;
+import com.vaadin.data.util.ObjectProperty;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
+import com.vaadin.server.VaadinSession;
 import com.vaadin.shared.ui.label.ContentMode;
 import com.vaadin.ui.Accordion;
 import com.vaadin.ui.HorizontalSplitPanel;
@@ -10,7 +12,11 @@ import com.vaadin.ui.Label;
 import com.vaadin.ui.Layout;
 import com.vaadin.ui.TabSheet;
 import com.vaadin.ui.TabSheet.SelectedTabChangeEvent;
+import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
+import controlador.UsuarioController;
+import modelo.DAO.UsuarioDAO;
+import modelo.entidades.Usuario;
 
 public class MainView extends VerticalLayout implements View {
 
@@ -18,9 +24,10 @@ public class MainView extends VerticalLayout implements View {
     private final HorizontalSplitPanel menuContent = new HorizontalSplitPanel();
     private final Accordion nav = new Accordion();
     private final boolean artista = true;
+    private Usuario usuario = new Usuario(NAME, null, NAME, NAME, NAME, NAME);
+    private UsuarioController usuarioController = new UsuarioController();
 
-    public MainView(final Navigator navigator) {
-
+    public MainView() {
         nav.addSelectedTabChangeListener(
                 new TabSheet.SelectedTabChangeListener() {
                     @Override
@@ -30,6 +37,7 @@ public class MainView extends VerticalLayout implements View {
                         String caption = tabsheet.getTab(tab).getCaption();
                         switch (caption) {
                             case "Principal":
+                                menuContent.setSecondComponent(new PrincipalUserView(usuario));
                                 break;
                             case "Buscar eventos":
                                 break;
@@ -37,10 +45,12 @@ public class MainView extends VerticalLayout implements View {
                                 menuContent.setSecondComponent(new CreateEventView());
                                 break;
                             case "Editar datos":
-                                menuContent.setSecondComponent(new EditDataView());
+                                menuContent.setSecondComponent(new EditDataView(usuario));
                                 break;
                             case "Logout":
-                                navigator.navigateTo(LoginView.NAME);
+                                Label aux = (Label) VaadinSession.getCurrent().getAttribute("correo");
+                                aux.setValue("out");
+                                UI.getCurrent().getNavigator().navigateTo(LoginView.NAME);
                                 break;
                             default:
                         }
@@ -58,17 +68,21 @@ public class MainView extends VerticalLayout implements View {
         menuContent.setFirstComponent(nav);
         menuContent.setLocked(true);
         menuContent.setSplitPosition(15);
-        
+
         addComponent(new Label("<h1>MyEvent</h1>", ContentMode.HTML));
         addComponent(menuContent);
         addComponent(new Label("<h3>MyEvent. Grupo 1 TAD. Universidad Pablo de "
                 + "Olvaide</h3>", ContentMode.HTML));
-
     }
 
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent event) {
-
+        Label aux = (Label) VaadinSession.getCurrent().getAttribute("correo");
+        if (aux.getValue().equals("out")) {
+            UI.getCurrent().getNavigator().navigateTo(LoginView.NAME);
+        } else {
+            usuario = usuarioController.getUsuario(aux.getValue());
+            menuContent.setSecondComponent(new PrincipalUserView(usuario));
+        }
     }
-
 }

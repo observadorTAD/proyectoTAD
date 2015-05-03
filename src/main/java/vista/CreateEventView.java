@@ -9,7 +9,6 @@ import com.vaadin.ui.Notification;
 import com.vaadin.ui.TextArea;
 import com.vaadin.ui.TextField;
 import controlador.EventoController;
-import modelo.entidades.Artista;
 
 public class CreateEventView extends FormLayout implements View {
 
@@ -29,7 +28,9 @@ public class CreateEventView extends FormLayout implements View {
                 @Override
                 public void buttonClick(Button.ClickEvent event) {
                     String artista = "holita";
-                    eventoController.crearEvento(titulo.getValue(), lugar.getValue(), fecha.getValue(), precio.getValue(),artista, descripcion.getValue());
+                    eventoController.crearEvento(titulo.getValue(), lugar.getValue(), fecha.getValue(), precio.getValue(), descripcion.getValue(),artista);
+                        Notification.show("ERROR", "El precio debe tener un valor numérico", Notification.Type.ERROR_MESSAGE);
+         
                 }
             });
             titulo.setRequired(true);

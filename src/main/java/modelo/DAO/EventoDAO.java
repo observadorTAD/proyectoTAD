@@ -5,7 +5,10 @@
  */
 package modelo.DAO;
 
+import com.mongodb.BasicDBList;
+import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
+import modelo.entidades.Evento;
 
 /**
  *
@@ -19,6 +22,17 @@ public class EventoDAO {
     public EventoDAO() {
         jdbc = new MongoDBJDBC();
         this.coll = jdbc.getCollection("eventos");
+    }
+
+    public void crearEvento(Evento evento) {
+        BasicDBObject doc = new BasicDBObject("titulo", evento.getTitulo())
+                .append("artista", evento.getArtista().getNombre())
+                .append("fecha", evento.getFecha())
+                .append("lugar", evento.getLugar())
+                .append("precio", evento.getPrecio())
+                .append("descripcion", evento.getDescripcion())
+                .append("usuarios", new BasicDBList());
+        coll.insert(doc);
     }
     
 }

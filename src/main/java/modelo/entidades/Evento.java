@@ -35,5 +35,33 @@ public class Evento {
         this.precio = precio;
         this.fecha = fecha;
     }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public String getLugar() {
+        return lugar;
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public List<Persona> getUsuarios() {
+        return usuarios;
+    }
+
+    public Artista getArtista() {
+        return artista;
+    }
+
+    public float getPrecio() {
+        return precio;
+    }
     
 }

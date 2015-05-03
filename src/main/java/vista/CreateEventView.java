@@ -28,13 +28,13 @@ public class CreateEventView extends FormLayout implements View {
 
                 @Override
                 public void buttonClick(Button.ClickEvent event) {
-                    if(!fecha.isEmpty() && !titulo.isEmpty() && !lugar.isEmpty() && isNumeric(precio.getValue())){
-                    String artista = "holita";
-                    eventoController.crearEvento(titulo.getValue(), lugar.getValue(), fecha.getValue(), precio.getValue(), descripcion.getValue(),artista);
-                    //navigator.navigateTo(Main.NAME);
-                    Notification.show("¡Evento creado!", "Ha creado el evento con exito", Notification.Type.HUMANIZED_MESSAGE);
-                    }else{    
-                    Notification.show("ERROR", "Revise los datos ingresados", Notification.Type.ERROR_MESSAGE);
+                    if (!fecha.isEmpty() && !titulo.isEmpty() && !lugar.isEmpty() && isNumeric(precio.getValue())) {
+                        String artista = "holita";
+                        eventoController.crearEvento(titulo.getValue(), lugar.getValue(), fecha.getValue(), precio.getValue(), descripcion.getValue(), artista);
+                        //navigator.navigateTo(Main.NAME);
+                        Notification.show("¡Evento creado!", "Ha creado el evento con exito", Notification.Type.HUMANIZED_MESSAGE);
+                    } else {
+                        Notification.show("ERROR", "Revise los datos ingresados", Notification.Type.ERROR_MESSAGE);
                     }
                 }
             });
@@ -48,7 +48,7 @@ public class CreateEventView extends FormLayout implements View {
             addComponent(descripcion);
             addComponent(crear);
         } else {
-            Notification.show("ERROR","Necesita ser artista para crear un evento", Notification.Type.ERROR_MESSAGE);
+            Notification.show("ERROR", "Necesita ser artista para crear un evento", Notification.Type.ERROR_MESSAGE);
         }
     }
 
@@ -56,20 +56,21 @@ public class CreateEventView extends FormLayout implements View {
     public void enter(ViewChangeListener.ViewChangeEvent event) {
         Notification.show("CrearEvento");
     }
-    
-    private boolean isNumeric(String num){
+
+    private boolean isNumeric(String num) {
         boolean temp = true;
         int i = 0;
         boolean simbolo = false;
-        while(temp && i<num.length()){
-            if(num.charAt(i) == '.'){
-                if(!simbolo)
+        while (temp && i < num.length()) {
+            if (num.charAt(i) == '.') {
+                if (!simbolo) {
                     simbolo = true;
-                else
+                } else {
                     temp = false;
+                }
             }
-            if((num.charAt(i)<'0'&& num.charAt(i) != '.') || (num.charAt(i)>'9' && num.charAt(i) != '.')){
-                    temp = false;
+            if ((num.charAt(i) < '0' && num.charAt(i) != '.') || (num.charAt(i) > '9' && num.charAt(i) != '.')) {
+                temp = false;
             }
             i++;
         }

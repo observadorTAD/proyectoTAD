@@ -1,5 +1,6 @@
 package vista;
 
+import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.ui.Button;
@@ -20,38 +21,58 @@ public class CreateEventView extends FormLayout implements View {
     private final Button crear = new Button("Crear Evento");
     private EventoController eventoController = new EventoController();
 
-    public CreateEventView() {
+    public CreateEventView(final Navigator navigator) {
         boolean artista = true;
         if (artista) {
             crear.addClickListener(new Button.ClickListener() {
 
                 @Override
                 public void buttonClick(Button.ClickEvent event) {
+                    if(!fecha.isEmpty() && !titulo.isEmpty() && !lugar.isEmpty() && isNumeric(precio.getValue())){
                     String artista = "holita";
                     eventoController.crearEvento(titulo.getValue(), lugar.getValue(), fecha.getValue(), precio.getValue(), descripcion.getValue(),artista);
-                        Notification.show("ERROR", "El precio debe tener un valor numérico", Notification.Type.ERROR_MESSAGE);
-         
+                    //navigator.navigateTo(Main.NAME);
+                    Notification.show("¡Evento creado!", "Ha creado el evento con exito", Notification.Type.HUMANIZED_MESSAGE);
+                    }else{    
+                    Notification.show("ERROR", "Revise los datos ingresados", Notification.Type.ERROR_MESSAGE);
+                    }
                 }
             });
             titulo.setRequired(true);
-            titulo.setRequiredError("Es obligatorio tener un título");
             addComponent(titulo);
             lugar.setRequired(true);
-            lugar.setRequiredError("Es obligatorio indicar una localización");
             addComponent(lugar);
             fecha.setRequired(true);
-            fecha.setRequiredError("Es obligatorio tener una fecha");
             addComponent(fecha);
             addComponent(precio);
             addComponent(descripcion);
             addComponent(crear);
         } else {
-            Notification.show("Necesita ser artista para crear un evento", Notification.Type.ERROR_MESSAGE);
+            Notification.show("ERROR","Necesita ser artista para crear un evento", Notification.Type.ERROR_MESSAGE);
         }
     }
 
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent event) {
         Notification.show("CrearEvento");
+    }
+    
+    private boolean isNumeric(String num){
+        boolean temp = true;
+        int i = 0;
+        boolean simbolo = false;
+        while(temp && i<num.length()){
+            if(num.charAt(i) == '.'){
+                if(!simbolo)
+                    simbolo = true;
+                else
+                    temp = false;
+            }
+            if((num.charAt(i)<'0'&& num.charAt(i) != '.') || (num.charAt(i)>'9' && num.charAt(i) != '.')){
+                    temp = false;
+            }
+            i++;
+        }
+        return temp;
     }
 }

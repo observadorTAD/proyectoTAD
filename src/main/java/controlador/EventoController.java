@@ -23,7 +23,13 @@ public class EventoController {
     }
     
     public void crearEvento(String titulo, String lugar, Date fecha, String precio, String descripcion, String artista){
-        
-    //    Evento evento = new Evento(titulo, descripcion, lugar, fecha, null, artistaController.isArtista(artista), Float.parseFloat(precio));
+        float precioFinal;
+        if(precio == null ||precio.equals("")){
+            precioFinal=0.0f;
+        }else{
+        precioFinal = Float.parseFloat(precio);
+    }
+        Evento evento = new Evento(titulo, descripcion, lugar, fecha, null, artistaController.getArtista(artista), precioFinal);
+        eventoDAO.crearEvento(evento);
     }
 }

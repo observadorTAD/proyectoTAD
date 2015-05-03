@@ -54,7 +54,7 @@ public class RegisterView extends VerticalLayout implements View {
                                 Notification.Type.HUMANIZED_MESSAGE);
                     } else {
                         Notification.show("Campos inválidos", "Compruebe si el correo es válido o si las contraseñas coinciden.",
-                            Notification.Type.ERROR_MESSAGE);
+                                Notification.Type.ERROR_MESSAGE);
                     }
                 } catch (Exception e) {
                     Notification.show("Error de registro", "Ya existe ese correo. "

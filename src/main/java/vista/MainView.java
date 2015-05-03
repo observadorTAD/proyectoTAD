@@ -42,7 +42,7 @@ public class MainView extends VerticalLayout implements View {
                             case "Buscar eventos":
                                 break;
                             case "Crear evento":
-                                menuContent.setSecondComponent(new CreateEventView(navigator));
+                                menuContent.setSecondComponent(new CreateEventView());
                                 break;
                             case "Editar datos":
                                 menuContent.setSecondComponent(new EditDataView(usuario));

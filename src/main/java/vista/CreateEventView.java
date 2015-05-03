@@ -21,7 +21,7 @@ public class CreateEventView extends FormLayout implements View {
     private final Button crear = new Button("Crear Evento");
     private EventoController eventoController = new EventoController();
 
-    public CreateEventView(final Navigator navigator) {
+    public CreateEventView() {
         boolean artista = true;
         if (artista) {
             crear.addClickListener(new Button.ClickListener() {

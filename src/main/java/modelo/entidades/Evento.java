@@ -11,7 +11,7 @@ public class Evento {
     private String descripcion;
     private String lugar;
     private Date fecha;
-    private List<Persona> usuarios;
+    private List<Usuario> usuarios;
     private Artista artista;
     private float precio;
 
@@ -25,7 +25,7 @@ public class Evento {
      * @param artista
      * @param precio 
      */
-    public Evento(String titulo, String descripcion, String lugar, Date fecha, List<Persona> usuarios, 
+    public Evento(String titulo, String descripcion, String lugar, Date fecha, List<Usuario> usuarios, 
             Artista artista, float precio) {
         this.titulo = titulo;
         this.descripcion = descripcion;
@@ -52,7 +52,7 @@ public class Evento {
         return fecha;
     }
 
-    public List<Persona> getUsuarios() {
+    public List<Usuario> getUsuarios() {
         return usuarios;
     }
 

@@ -44,13 +44,18 @@ public class RegisterView extends VerticalLayout implements View {
             public void buttonClick(ClickEvent event
             ) {
                 //Guardar base datos
-                try{
-                usuarioController.crearNuevoUsuario(correo.getValue(), password.getValue(), nombre.getValue(), 
-                        apellidos.getValue(), nombreUsuario.getValue());
-                navigator.navigateTo(LoginView.NAME);
-                Notification.show("¡Enhorabuena!", "Se ha registrado con éxito",
-                            Notification.Type.HUMANIZED_MESSAGE);
-                } catch(Exception e){
+                try {
+                    if (correo.isValid() && password.getValue().equals(passwordConf.getValue())) {
+                        usuarioController.crearNuevoUsuario(correo.getValue(), password.getValue(), nombre.getValue(),
+                                apellidos.getValue(), nombreUsuario.getValue());
+                        navigator.navigateTo(LoginView.NAME);
+                        Notification.show("¡Enhorabuena!", "Se ha registrado con éxito",
+                                Notification.Type.HUMANIZED_MESSAGE);
+                    } else {
+                        Notification.show("Campos inválidos", "Compruebe si el correo es válido o si las contraseñas coinciden.",
+                            Notification.Type.ERROR_MESSAGE);
+                    }
+                } catch (Exception e) {
                     Notification.show("Error registro", "Ya existe ese correo. Utilice otro correo para registrarse",
                             Notification.Type.ERROR_MESSAGE);
                 }
@@ -64,12 +69,13 @@ public class RegisterView extends VerticalLayout implements View {
         }
         );
         correo.addValidator(new EmailValidator("Introduzca un correo"));
+        correo.setImmediate(true);
         correo.setRequired(true);
-       
+
         password.setRequired(true);
         passwordConf.setRequired(true);
         nombreUsuario.setRequired(true);
-        
+
         loginForm.addComponent(correo);
         loginForm.addComponent(password);
         loginForm.addComponent(passwordConf);
@@ -87,7 +93,7 @@ public class RegisterView extends VerticalLayout implements View {
 
         loginPanel.setContent(loginForm);
         cabecera.setValue("<h1>Registrarte y conoce eventos</h1>");
-        
+
         cabecera.setContentMode(ContentMode.HTML);
         addComponent(cabecera);
         addComponent(loginPanel);

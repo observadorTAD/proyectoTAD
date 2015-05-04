@@ -29,6 +29,7 @@ public class CreateEventView extends FormLayout implements View {
                 @Override
                 public void buttonClick(Button.ClickEvent event) {
                     if (!fecha.isEmpty() && !titulo.isEmpty() && !lugar.isEmpty() && isNumeric(precio.getValue())) {
+                        //Debe ser el nombreArtistico del artista
                         String artista = "holita";
                         eventoController.crearEvento(titulo.getValue(), lugar.getValue(), fecha.getValue(), precio.getValue(), descripcion.getValue(), artista);
                         //navigator.navigateTo(Main.NAME);

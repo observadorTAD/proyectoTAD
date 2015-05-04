@@ -6,6 +6,7 @@
 package controlador;
 
 import java.util.Date;
+import java.util.List;
 import modelo.DAO.EventoDAO;
 import modelo.entidades.Artista;
 import modelo.entidades.Evento;
@@ -23,13 +24,17 @@ public class EventoController {
     }
     
     public void crearEvento(String titulo, String lugar, Date fecha, String precio, String descripcion, String artista){
-        float precioFinal;
+        Double precioFinal;
         if(precio == null ||precio.equals("")){
-            precioFinal=0.0f;
+            precioFinal=0.0;
         }else{
-        precioFinal = Float.parseFloat(precio);
+        precioFinal = Double.parseDouble(precio);
     }
-        Evento evento = new Evento(titulo, descripcion, lugar, fecha, null, artistaController.getArtista(artista), precioFinal);
+        Evento evento = new Evento(titulo, descripcion, lugar, fecha, artista, precioFinal);
         eventoDAO.crearEvento(evento);
+    }
+    
+    public List<Evento> getEventos(){
+        return eventoDAO.getEventos();
     }
 }

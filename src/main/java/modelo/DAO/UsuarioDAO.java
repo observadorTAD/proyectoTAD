@@ -63,12 +63,17 @@ public class UsuarioDAO {
     }
 
     public void updateUsuario(String correo, String password, String nombreUsuario, String nombre, String apellidos) {
+        BasicDBObject query = new BasicDBObject("_id", correo);
+        
+        coll.update(query, new BasicDBObject().append("$set", new BasicDBObject().append("nombre", nombre)));
+        coll.update(query, new BasicDBObject().append("$set", new BasicDBObject().append("password", password)));
+        coll.update(query, new BasicDBObject().append("$set", new BasicDBObject().append("nombreUsuario", nombreUsuario)));
+        coll.update(query, new BasicDBObject().append("$set", new BasicDBObject().append("apellidos", apellidos)));
+    }
 
-        BasicDBObject searchQuery = new BasicDBObject().append("_id", correo);
-
-        coll.update(searchQuery, new BasicDBObject().append("$set", new BasicDBObject().append("nombre", nombre)));
-        coll.update(searchQuery, new BasicDBObject().append("$set", new BasicDBObject().append("password", password)));
-        coll.update(searchQuery, new BasicDBObject().append("$set", new BasicDBObject().append("nombreUsuario", nombreUsuario)));
-        coll.update(searchQuery, new BasicDBObject().append("$set", new BasicDBObject().append("apellidos", apellidos)));
+    public void removeUsuario(String correo) {
+        BasicDBObject query = new BasicDBObject("_id", correo);
+        
+        coll.remove(query);
     }
 }

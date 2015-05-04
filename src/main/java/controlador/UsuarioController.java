@@ -34,4 +34,8 @@ public class UsuarioController {
     public void updateUsuario(String correo, String password, String nombreUsuario, String nombre, String apellidos){
         usuarioDAO.updateUsuario(correo, password, nombreUsuario, nombre, apellidos);
     }
+    
+    public void removeUsuario(String correo){
+        usuarioDAO.removeUsuario(correo);
+    }
 }

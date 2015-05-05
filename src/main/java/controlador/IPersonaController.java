@@ -8,7 +8,6 @@ package controlador;
 import java.util.List;
 import modelo.entidades.Evento;
 import modelo.entidades.Persona;
-import modelo.entidades.Usuario;
 
 /**
  *
@@ -22,9 +21,11 @@ public interface IPersonaController {
 
     Persona getUsuario(String correo);
 
-    boolean isUser(String correo, String password);
-    
     boolean isArtista(String correo);
 
     void removeUsuario(String correo);
+
+    boolean login(String correo, String password);
+
+    public void updateUsuario(String correo, String password, String nombreUsuario, String nombre, String apellidos, String descripcion);
 }

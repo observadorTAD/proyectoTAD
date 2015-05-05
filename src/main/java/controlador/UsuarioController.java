@@ -28,7 +28,7 @@ public class UsuarioController implements IPersonaController {
     }
 
     @Override
-    public boolean isUser(String correo, String password) {
+    public boolean login(String correo, String password) {
         return usuarioDAO.isUser(correo, password);
     }
 
@@ -37,7 +37,8 @@ public class UsuarioController implements IPersonaController {
         return usuarioDAO.getUsuario(correo);
     }
 
-    public void updateUsuario(String correo, String password, String nombreUsuario, String nombre, String apellidos) {
+    @Override
+    public void updateUsuario(String correo, String password, String nombreUsuario, String nombre, String apellidos, String descripcion) {
         usuarioDAO.updateUsuario(correo, password, nombreUsuario, nombre, apellidos);
     }
 

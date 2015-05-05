@@ -11,17 +11,20 @@ import com.vaadin.ui.PasswordField;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.Window;
+import controlador.ArtistaController;
+import controlador.IPersonaController;
 import controlador.UsuarioController;
 import modelo.entidades.Persona;
 
 public class EditDataView extends FormLayout implements View {
 
-    private UsuarioController usuarioController = new UsuarioController();
+    private IPersonaController controller;
     private final PasswordField password = new PasswordField("Contraseña Actual");
     private final Button confirmarEditar = new Button("Confirmar");
     private final PasswordField newPassword = new PasswordField("Nueva contraseña");
     private final PasswordField passwordConf = new PasswordField("Confirmar contraseña");
-    private final TextField nombreUsuario = new TextField("Nombre de usuario");
+    private TextField nombreUsuario;
+    private TextField descripcion = new TextField("Descrpición");
     private final TextField nombre = new TextField("Nombre");
     private final TextField apellidos = new TextField("Apellidos");
     private final Button guardar = new Button("Guardar datos");
@@ -30,13 +33,19 @@ public class EditDataView extends FormLayout implements View {
     private final Button eliminarCuenta = new Button("Eliminar Cuenta");
     private final Button confirmarBorrar = new Button("Confirmar");
 
-    public EditDataView(final Persona usuario) {
+    public EditDataView(final Persona usuario, boolean artista) {
+        if (artista) {
+            controller = new ArtistaController();
+            nombreUsuario = new TextField("Nombre artistico");
+        } else {
+            controller = new UsuarioController();
+            nombreUsuario = new TextField("Nombre de usuario");
+        }
         confirmarBorrar.addClickListener(new Button.ClickListener() {
-
             @Override
             public void buttonClick(Button.ClickEvent event) {
-                if (usuarioController.isUser(usuario.getCorreo(), password.getValue())) {
-                    usuarioController.removeUsuario(usuario.getCorreo());
+                if (controller.login(usuario.getCorreo(), password.getValue())) {
+                    controller.removeUsuario(usuario.getCorreo());
                     Notification.show("Se ha eliminado la cuenta con éxito",
                             Notification.Type.HUMANIZED_MESSAGE);
                     subWindow.close();
@@ -48,18 +57,18 @@ public class EditDataView extends FormLayout implements View {
                 }
             }
         });
-        
+
         confirmarEditar.addClickListener(new Button.ClickListener() {
 
             @Override
             public void buttonClick(Button.ClickEvent event) {
-                if (usuarioController.isUser(usuario.getCorreo(), password.getValue())) {
+                if (controller.login(usuario.getCorreo(), password.getValue())) {
                     String aux = usuario.getPassword();
                     if (!newPassword.getValue().equals("")) {
                         aux = newPassword.getValue();
                     }
-                    usuarioController.updateUsuario(usuario.getCorreo(), aux, nombreUsuario.getValue(),
-                            nombre.getValue(), apellidos.getValue());
+                    controller.updateUsuario(usuario.getCorreo(), aux, nombreUsuario.getValue(),
+                            nombre.getValue(), apellidos.getValue(), descripcion.getValue());
                     Notification.show("Se han modificado los datos con éxito",
                             Notification.Type.HUMANIZED_MESSAGE);
                     subWindow.close();
@@ -70,7 +79,7 @@ public class EditDataView extends FormLayout implements View {
                 }
             }
         });
-        
+
         guardar.addClickListener(new Button.ClickListener() {
 
             @Override
@@ -85,17 +94,17 @@ public class EditDataView extends FormLayout implements View {
                 }
             }
         });
-        
+
         eliminarCuenta.addClickListener(new Button.ClickListener() {
 
             @Override
             public void buttonClick(Button.ClickEvent event) {
                 subContent.removeComponent(confirmarEditar);
                 subContent.addComponent(confirmarBorrar);
-                    UI.getCurrent().addWindow(subWindow);
-                    Notification.show("Esto eliminará la cuenta de forma definitiva.",
-                            Notification.Type.WARNING_MESSAGE);
-                
+                UI.getCurrent().addWindow(subWindow);
+                Notification.show("Esto eliminará la cuenta de forma definitiva.",
+                        Notification.Type.WARNING_MESSAGE);
+
             }
         });
 
@@ -104,7 +113,6 @@ public class EditDataView extends FormLayout implements View {
 
         // Put some components in it
         subContent.addComponent(password);
-        
 
         // Center it in the browser window
         subWindow.center();
@@ -112,11 +120,14 @@ public class EditDataView extends FormLayout implements View {
         nombre.setValue(usuario.getNombre());
         apellidos.setValue(usuario.getApellidos());
         addComponent(nombreUsuario);
+        if (artista) {
+            addComponent(descripcion);
+        }
         addComponent(nombre);
         addComponent(apellidos);
         addComponent(newPassword);
         addComponent(passwordConf);
-        
+
         HorizontalLayout botones = new HorizontalLayout();
         botones.addComponent(guardar);
         botones.addComponent(eliminarCuenta);

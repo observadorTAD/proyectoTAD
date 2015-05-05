@@ -4,45 +4,47 @@ import java.util.List;
 import modelo.DAO.ArtistaDAO;
 import modelo.entidades.Artista;
 import modelo.entidades.Evento;
-import modelo.entidades.Persona;
 import modelo.entidades.Usuario;
 
 /**
  *
  * @author Alberto Lo
  */
-public class ArtistaController implements IPersonaController{
-    
-    public Artista getArtista(String artista){
+public class ArtistaController implements IPersonaController {
+
+    public Artista getArtista(String artista) {
         return new Artista(artista, artista, artista, artista, artista, artista);
     }
-    
-     private final ArtistaDAO artistaDAO;
-    
-    public ArtistaController(){
+
+    private final ArtistaDAO artistaDAO;
+
+    public ArtistaController() {
         artistaDAO = new ArtistaDAO();
     }
+
     public void crearNuevoArtista(String correo, String password, String nombre, String apellidos, String nombreUsuario) {
         Usuario artista = new Usuario(nombreUsuario, null, correo, password, nombre, apellidos);
         artistaDAO.crearNuevoArtista(artista);
     }
+
     @Override
-    public boolean isArtista(String user){
-         return artistaDAO.isUser(user);
+    public boolean isArtista(String user) {
+        return artistaDAO.isUser(user);
     }
-    
-    public boolean login(String email, String pass){
+
+    @Override
+    public boolean login(String email, String pass) {
         return artistaDAO.login(email, pass);
     }
 
     @Override
     public void addEventos(String correo, List<Evento> eventos) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        artistaDAO.addEventos(correo, eventos);
     }
 
     @Override
     public List<Evento> getEventos(String correo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return artistaDAO.getEventos(correo);
     }
 
     @Override
@@ -51,13 +53,13 @@ public class ArtistaController implements IPersonaController{
     }
 
     @Override
-    public boolean isUser(String correo, String password) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void removeUsuario(String correo) {
+        artistaDAO.removeArtista(correo);
     }
 
     @Override
-    public void removeUsuario(String correo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void updateUsuario(String correo, String password, String nombreUsuario, String nombre, String apellidos, String descripcion) {
+        artistaDAO.updateArtista(correo, password, nombreUsuario, nombre, apellidos, descripcion);
     }
-    
+
 }

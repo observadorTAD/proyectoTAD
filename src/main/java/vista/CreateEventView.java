@@ -9,7 +9,10 @@ import com.vaadin.ui.FormLayout;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.TextArea;
 import com.vaadin.ui.TextField;
+import com.vaadin.ui.UI;
+import controlador.ArtistaController;
 import controlador.EventoController;
+import modelo.entidades.Usuario;
 
 public class CreateEventView extends FormLayout implements View {
 
@@ -20,18 +23,19 @@ public class CreateEventView extends FormLayout implements View {
     private final DateField fecha = new DateField("Fecha del evento");
     private final Button crear = new Button("Crear Evento");
     private EventoController eventoController = new EventoController();
+    private ArtistaController artistaController = new ArtistaController();
 
-    public CreateEventView() {
-        boolean artista = true;
+    public CreateEventView(final Usuario usuario) {
+        boolean artista = artistaController.isArtista(usuario.getNombre());
         if (artista) {
             crear.addClickListener(new Button.ClickListener() {
 
                 @Override
                 public void buttonClick(Button.ClickEvent event) {
                     if (!fecha.isEmpty() && !titulo.isEmpty() && !lugar.isEmpty() && isNumeric(precio.getValue())) {
-                        String artista = "holita";
+                        String artista = usuario.getNombre();
                         eventoController.crearEvento(titulo.getValue(), lugar.getValue(), fecha.getValue(), precio.getValue(), descripcion.getValue(), artista);
-                        //navigator.navigateTo(Main.NAME);
+                        UI.getCurrent().getNavigator().navigateTo(MainView.NAME);
                         Notification.show("¡Evento creado!", "Ha creado el evento con exito", Notification.Type.HUMANIZED_MESSAGE);
                     } else {
                         Notification.show("ERROR", "Revise los datos ingresados", Notification.Type.ERROR_MESSAGE);

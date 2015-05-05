@@ -1,7 +1,6 @@
 package vista;
 
 import com.vaadin.data.validator.EmailValidator;
-import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.shared.ui.label.ContentMode;
@@ -9,6 +8,7 @@ import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
+import com.vaadin.ui.CheckBox;
 import com.vaadin.ui.FormLayout;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
@@ -18,6 +18,7 @@ import com.vaadin.ui.PasswordField;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
+import controlador.ArtistaController;
 import controlador.UsuarioController;
 
 public class RegisterView extends VerticalLayout implements View {
@@ -34,6 +35,8 @@ public class RegisterView extends VerticalLayout implements View {
     private final TextField nombreUsuario = new TextField("Nombre de usuario");
     private final Label cabecera = new Label(); //editar
     private final UsuarioController usuarioController = new UsuarioController();
+    private final ArtistaController artistaController = new ArtistaController();
+    private final CheckBox artista = new CheckBox("Soy artista");
 
     private final Button registrarse = new Button("Registrarse");
     private final Button volver = new Button("Volver");
@@ -47,8 +50,13 @@ public class RegisterView extends VerticalLayout implements View {
                 //Guardar base datos
                 try {
                     if (correo.isValid() && password.getValue().equals(passwordConf.getValue())) {
-                        usuarioController.crearNuevoUsuario(correo.getValue(), password.getValue(), nombre.getValue(),
-                                apellidos.getValue(), nombreUsuario.getValue());
+                        if (artista.getValue() == true) {
+                            artistaController.crearNuevoArtista(correo.getValue(), password.getValue(), nombre.getValue(),
+                                    apellidos.getValue(), nombreUsuario.getValue());
+                        } else {
+                            usuarioController.crearNuevoUsuario(correo.getValue(), password.getValue(), nombre.getValue(),
+                                    apellidos.getValue(), nombreUsuario.getValue());
+                        }
                         UI.getCurrent().getNavigator().navigateTo(LoginView.NAME);
                         Notification.show("Se ha registrado con éxito",
                                 Notification.Type.HUMANIZED_MESSAGE);
@@ -73,7 +81,6 @@ public class RegisterView extends VerticalLayout implements View {
         correo.addValidator(new EmailValidator("Introduzca un correo"));
         correo.setImmediate(true);
         correo.setRequired(true);
-
         password.setRequired(true);
         passwordConf.setRequired(true);
         nombreUsuario.setRequired(true);
@@ -84,7 +91,7 @@ public class RegisterView extends VerticalLayout implements View {
         loginForm.addComponent(nombreUsuario);
         loginForm.addComponent(nombre);
         loginForm.addComponent(apellidos);
-
+        loginForm.addComponent(artista);
         buttonLayout.addComponent(registrarse);
         buttonLayout.addComponent(volver);
         buttonLayout.setSizeFull();

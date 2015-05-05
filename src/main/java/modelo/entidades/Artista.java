@@ -4,7 +4,7 @@ package modelo.entidades;
  * Esta clase contine los métodos y atributos que pertenecen a la entidad
  * Artista
  */
-public class Artista {
+public class Artista{
 
     private final String email;
     private final String password;

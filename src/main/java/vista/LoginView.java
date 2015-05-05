@@ -1,5 +1,6 @@
 package vista;
 
+import com.google.gwt.aria.client.ArticleRole;
 import com.vaadin.annotations.PreserveOnRefresh;
 import com.vaadin.data.util.ObjectProperty;
 import com.vaadin.navigator.View;
@@ -18,6 +19,7 @@ import com.vaadin.ui.PasswordField;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
+import controlador.ArtistaController;
 import controlador.UsuarioController;
 import modelo.DAO.UsuarioDAO;
 import modelo.entidades.Usuario;
@@ -33,6 +35,7 @@ public class LoginView extends VerticalLayout implements View {
     private final Button registrarse = new Button("Registrarse");
     private final Button loginButton = new Button("Log In");
     private final UsuarioController usuarioController = new UsuarioController();
+    private final ArtistaController artistaController = new ArtistaController();
 
     public LoginView() {
 
@@ -46,7 +49,8 @@ public class LoginView extends VerticalLayout implements View {
         loginButton.addClickListener(new Button.ClickListener() {
             @Override
             public void buttonClick(ClickEvent event) {
-                if (usuarioController.isUser(correo.getValue(), password.getValue())) {
+                if (usuarioController.isUser(correo.getValue(), password.getValue()) ||
+                        artistaController.login(correo.getValue(), password.getValue())) {
                     Label aux = (Label) VaadinSession.getCurrent().getAttribute("correo");
                     aux.setValue(correo.getValue());
                     

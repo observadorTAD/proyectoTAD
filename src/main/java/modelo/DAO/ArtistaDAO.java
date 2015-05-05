@@ -26,7 +26,7 @@ public class ArtistaDAO {
 
     public ArtistaDAO() {
         jdbc = new MongoDBJDBC();
-        this.coll = jdbc.getCollection("artista");
+        this.coll = jdbc.getCollection("artistas");
     }
 
     public void crearNuevoArtista(Usuario usuario) {

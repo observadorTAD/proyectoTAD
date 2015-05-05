@@ -46,7 +46,7 @@ public class MainView extends VerticalLayout implements View {
                                 menuContent.setSecondComponent(new CreateEventView(usuario, artista));
                                 break;
                             case "Editar datos":
-                                menuContent.setSecondComponent(new EditDataView(usuario));
+                                menuContent.setSecondComponent(new EditDataView(usuario, artista));
                                 break;
                             case "Logout":
                                 Label aux = (Label) VaadinSession.getCurrent().getAttribute("correo");

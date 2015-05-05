@@ -49,7 +49,7 @@ public class LoginView extends VerticalLayout implements View {
         loginButton.addClickListener(new Button.ClickListener() {
             @Override
             public void buttonClick(ClickEvent event) {
-                if (usuarioController.isUser(correo.getValue(), password.getValue())) {
+                if (usuarioController.login(correo.getValue(), password.getValue())) {
                     Label aux = (Label) VaadinSession.getCurrent().getAttribute("correo");
                     aux.setValue(correo.getValue());
 

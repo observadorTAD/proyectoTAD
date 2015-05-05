@@ -156,7 +156,9 @@ public class AddEventView extends VerticalLayout implements View {
                 Collection miListaEventos = misEventos.getItemIds();
                 List<Evento> miListaDefinitiva = new ArrayList<>();
                 for (Object miListaEvento : miListaEventos) {
-                    miListaDefinitiva.add(listaEventos.get((int) miListaEvento));
+                    if ((int) miListaEvento > 0) {
+                        miListaDefinitiva.add(listaEventos.get((int) miListaEvento));
+                    }
                 }
                 usuarioController.addEventos(usuario.getCorreo(), miListaDefinitiva);
             }

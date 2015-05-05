@@ -36,7 +36,8 @@ public class ArtistaDAO{
                 .append("nombre", usuario.getNombre())
                 .append("apellidos", usuario.getApellidos())
                 .append("nombreArtistico", usuario.getNombreUsuario())
-                .append("eventos", new BasicDBList());
+                .append("eventos", new BasicDBList())
+                .append("descripcion", "");
         coll.insert(doc);
     }
 

@@ -51,11 +51,19 @@ public class RegisterView extends VerticalLayout implements View {
                 try {
                     if (correo.isValid() && password.getValue().equals(passwordConf.getValue())) {
                         if (artista.getValue() == true) {
-                            artistaController.crearNuevoArtista(correo.getValue(), password.getValue(), nombre.getValue(),
-                                    apellidos.getValue(), nombreUsuario.getValue());
+                            if (usuarioController.getUsuario(correo.getValue()) == null) {
+                                artistaController.crearNuevoArtista(correo.getValue(), password.getValue(), nombre.getValue(),
+                                        apellidos.getValue(), nombreUsuario.getValue());
+                            } else {
+                                throw new Exception();
+                            }
                         } else {
-                            usuarioController.crearNuevoUsuario(correo.getValue(), password.getValue(), nombre.getValue(),
-                                    apellidos.getValue(), nombreUsuario.getValue());
+                            if (!artistaController.isArtista(correo.getValue())) {
+                                usuarioController.crearNuevoUsuario(correo.getValue(), password.getValue(), nombre.getValue(),
+                                        apellidos.getValue(), nombreUsuario.getValue());
+                            } else {
+                                throw new Exception();
+                            }
                         }
                         UI.getCurrent().getNavigator().navigateTo(LoginView.NAME);
                         Notification.show("Se ha registrado con éxito",

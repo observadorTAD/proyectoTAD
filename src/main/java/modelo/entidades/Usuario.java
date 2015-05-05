@@ -1,12 +1,13 @@
 package modelo.entidades;
 
 import java.util.List;
+import modelo.entidades.Persona;
 
 /**
  * Esta clase contine los métodos y atributos que pertenecen a la entidad
  * Usuario
  */
-public class Usuario {
+public class Usuario implements Persona{
 
     private final String correo;
     private final String password;
@@ -35,26 +36,32 @@ public class Usuario {
         this.nombreUsuario = nombreUsuario;
     }
 
+    @Override
     public List<Evento> getEventos() {
         return eventos;
     }
 
+    @Override
     public String getNombreUsuario() {
         return nombreUsuario;
     }
 
+    @Override
     public String getCorreo() {
         return correo;
     }
 
+    @Override
     public String getPassword() {
         return password;
     }
 
+    @Override
     public String getNombre() {
         return nombre;
     }
 
+    @Override
     public String getApellidos() {
         return apellidos;
     }

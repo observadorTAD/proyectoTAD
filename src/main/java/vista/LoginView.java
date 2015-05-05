@@ -49,11 +49,17 @@ public class LoginView extends VerticalLayout implements View {
         loginButton.addClickListener(new Button.ClickListener() {
             @Override
             public void buttonClick(ClickEvent event) {
-                if (usuarioController.isUser(correo.getValue(), password.getValue()) ||
-                        artistaController.login(correo.getValue(), password.getValue())) {
+                if (usuarioController.isUser(correo.getValue(), password.getValue())) {
                     Label aux = (Label) VaadinSession.getCurrent().getAttribute("correo");
                     aux.setValue(correo.getValue());
-                    
+
+                    UI.getCurrent().getNavigator().navigateTo(MainView.NAME);
+                } else if (artistaController.login(correo.getValue(), password.getValue())) {
+                    Label aux = (Label) VaadinSession.getCurrent().getAttribute("correo");
+                    aux.setValue(correo.getValue());
+                    Label aux2 = (Label) VaadinSession.getCurrent().getAttribute("artista");
+                    aux2.setValue("true");
+
                     UI.getCurrent().getNavigator().navigateTo(MainView.NAME);
                 } else {
                     Notification.show("Correo/contraseña no coinciden", Notification.Type.ERROR_MESSAGE);

@@ -12,7 +12,7 @@ import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.Window;
 import controlador.UsuarioController;
-import modelo.entidades.Usuario;
+import modelo.entidades.Persona;
 
 public class EditDataView extends FormLayout implements View {
 
@@ -30,7 +30,7 @@ public class EditDataView extends FormLayout implements View {
     private final Button eliminarCuenta = new Button("Eliminar Cuenta");
     private final Button confirmarBorrar = new Button("Confirmar");
 
-    public EditDataView(final Usuario usuario) {
+    public EditDataView(final Persona usuario) {
         confirmarBorrar.addClickListener(new Button.ClickListener() {
 
             @Override

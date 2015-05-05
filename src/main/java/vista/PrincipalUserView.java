@@ -9,7 +9,7 @@ import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.VerticalLayout;
-import modelo.entidades.Usuario;
+import modelo.entidades.Persona;
 
 /**
  *
@@ -17,7 +17,7 @@ import modelo.entidades.Usuario;
  */
 public class PrincipalUserView extends VerticalLayout implements View {
 
-    public PrincipalUserView(Usuario usuario) {
+    public PrincipalUserView(Persona usuario) {
         addComponent(new Label("Hola " + usuario.getNombreUsuario()));
     }
 

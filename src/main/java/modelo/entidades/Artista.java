@@ -1,12 +1,15 @@
 package modelo.entidades;
 
+import java.util.List;
+import modelo.entidades.Persona;
+
 /**
  * Esta clase contine los métodos y atributos que pertenecen a la entidad
  * Artista
  */
-public class Artista{
+public class Artista implements Persona{
 
-    private final String email;
+    private final String correo;
     private final String password;
     private final String nombre;
     private final String apellidos;
@@ -18,14 +21,14 @@ public class Artista{
      *
      * @param nombreArtistico
      * @param descripcion
-     * @param email
+     * @param correo
      * @param password
      * @param nombre
      * @param apellidos
      */
-    public Artista(String nombreArtistico, String descripcion, String email,
+    public Artista(String nombreArtistico, String descripcion, String correo,
             String password, String nombre, String apellidos) {
-        this.email = email;
+        this.correo = correo;
         this.password = password;
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -33,8 +36,8 @@ public class Artista{
         this.descripcion = descripcion;
     }
 
-    public String getEmail() {
-        return email;
+    public String getCorreo() {
+        return correo;
     }
 
     public String getPassword() {
@@ -47,6 +50,16 @@ public class Artista{
 
     public String getApellidos() {
         return apellidos;
+    }
+
+    @Override
+    public List<Evento> getEventos() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getNombreUsuario() {
+        return nombreArtistico;
     }
 
 }

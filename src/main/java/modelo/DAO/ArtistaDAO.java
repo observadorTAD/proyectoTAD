@@ -8,6 +8,12 @@ package modelo.DAO;
 import com.mongodb.BasicDBList;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
+import com.mongodb.DBCursor;
+import com.mongodb.DBObject;
+import java.util.List;
+import modelo.entidades.Artista;
+import modelo.entidades.Evento;
+import modelo.entidades.Persona;
 import modelo.entidades.Usuario;
 
 /**
@@ -29,7 +35,7 @@ public class ArtistaDAO{
                 .append("password", usuario.getPassword())
                 .append("nombre", usuario.getNombre())
                 .append("apellidos", usuario.getApellidos())
-                .append("nombreUsuario", usuario.getNombreUsuario())
+                .append("nombreArtistico", usuario.getNombreUsuario())
                 .append("eventos", new BasicDBList());
         coll.insert(doc);
     }
@@ -53,4 +59,16 @@ public class ArtistaDAO{
         return res;
     }
 
+    public Artista getArtista(String correo) {
+        Artista artista = null;
+        BasicDBObject query = new BasicDBObject("_id", correo);
+        DBCursor cursor = coll.find(query);
+        if (cursor.hasNext()) {
+            DBObject aux = cursor.next();
+            artista = new Artista((String) aux.get("nombreArtistico"),(String) aux.get("descripcion"),
+                    (String) aux.get("_id"), (String) aux.get("password"),
+                    (String) aux.get("nombre"), (String) aux.get("apellidos"));
+        }
+        return artista;
+    }
 }

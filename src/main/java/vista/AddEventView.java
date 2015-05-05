@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import modelo.entidades.Evento;
-import modelo.entidades.Usuario;
+import modelo.entidades.Persona;
 
 /**
  *
@@ -48,7 +48,7 @@ public class AddEventView extends VerticalLayout implements View {
     private final EventoController eventoController = new EventoController();
     private final UsuarioController usuarioController = new UsuarioController();
 
-    public AddEventView(final Usuario usuario) {
+    public AddEventView(final Persona usuario) {
         final List<Evento> listaEventos = eventoController.getEventos();
         List<Evento> listaEventoUsuario = usuarioController.getEventos(usuario.getCorreo());
 

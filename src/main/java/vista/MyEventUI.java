@@ -27,6 +27,7 @@ public class MyEventUI extends UI {
         try {
             VaadinSession.getCurrent().getLockInstance().lock();
             VaadinSession.getCurrent().setAttribute("correo", new Label("out"));
+            VaadinSession.getCurrent().setAttribute("artista", new Label("false"));
         } finally {
             // safely unlock the session in a finally block
             VaadinSession.getCurrent().getLockInstance().unlock();

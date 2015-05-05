@@ -1,6 +1,5 @@
 package vista;
 
-import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.ui.Button;
@@ -12,7 +11,7 @@ import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
 import controlador.ArtistaController;
 import controlador.EventoController;
-import modelo.entidades.Usuario;
+import modelo.entidades.Persona;
 
 public class CreateEventView extends FormLayout implements View {
 
@@ -25,8 +24,7 @@ public class CreateEventView extends FormLayout implements View {
     private EventoController eventoController = new EventoController();
     private ArtistaController artistaController = new ArtistaController();
 
-    public CreateEventView(final Usuario usuario) {
-        boolean artista = artistaController.isArtista(usuario.getNombre());
+    public CreateEventView(final Persona usuario, boolean artista) {
         if (artista) {
             crear.addClickListener(new Button.ClickListener() {
 

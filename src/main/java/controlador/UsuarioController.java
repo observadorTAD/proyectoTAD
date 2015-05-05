@@ -14,7 +14,7 @@ import modelo.entidades.Usuario;
  *
  * @author Alberto Lo
  */
-public class UsuarioController {
+public class UsuarioController implements IPersonaController {
 
     private final UsuarioDAO usuarioDAO;
 
@@ -27,10 +27,12 @@ public class UsuarioController {
         usuarioDAO.crearNuevoUsuario(usuario);
     }
 
+    @Override
     public boolean isUser(String correo, String password) {
         return usuarioDAO.isUser(correo, password);
     }
 
+    @Override
     public Usuario getUsuario(String correo) {
         return usuarioDAO.getUsuario(correo);
     }
@@ -39,15 +41,23 @@ public class UsuarioController {
         usuarioDAO.updateUsuario(correo, password, nombreUsuario, nombre, apellidos);
     }
 
+    @Override
     public void removeUsuario(String correo) {
         usuarioDAO.removeUsuario(correo);
     }
 
+    @Override
     public void addEventos(String correo, List<Evento> eventos) {
         usuarioDAO.addEventos(correo, eventos);
     }
 
+    @Override
     public List<Evento> getEventos(String correo) {
         return usuarioDAO.getEventos(correo);
+    }
+
+    @Override
+    public boolean isArtista(String correo) {
+        return false;
     }
 }

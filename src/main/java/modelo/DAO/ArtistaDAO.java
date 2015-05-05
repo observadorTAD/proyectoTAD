@@ -10,6 +10,8 @@ import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import modelo.entidades.Artista;
 import modelo.entidades.Evento;
@@ -20,14 +22,14 @@ import modelo.entidades.Usuario;
  *
  * @author Alberto Lo
  */
-public class ArtistaDAO{
+public class ArtistaDAO {
 
     private final MongoDBJDBC jdbc;
     private final DBCollection coll;
 
     public ArtistaDAO() {
         jdbc = new MongoDBJDBC();
-        this.coll = jdbc.getCollection("artista");
+        this.coll = jdbc.getCollection("artistas");
     }
 
     public void crearNuevoArtista(Usuario usuario) {
@@ -66,7 +68,7 @@ public class ArtistaDAO{
         DBCursor cursor = coll.find(query);
         if (cursor.hasNext()) {
             DBObject aux = cursor.next();
-            artista = new Artista((String) aux.get("nombreArtistico"),(String) aux.get("descripcion"),
+            artista = new Artista((String) aux.get("nombreArtistico"), (String) aux.get("descripcion"),
                     (String) aux.get("_id"), (String) aux.get("password"),
                     (String) aux.get("nombre"), (String) aux.get("apellidos"));
         }
@@ -74,18 +76,51 @@ public class ArtistaDAO{
     }
 
     public void removeArtista(String correo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        BasicDBObject query = new BasicDBObject("_id", correo);
+
+        coll.remove(query);
     }
 
     public List<Evento> getEventos(String correo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Evento> eventos = new ArrayList<>();
+        BasicDBObject query = new BasicDBObject("_id", correo);
+        DBCursor cursor = coll.find(query);
+        BasicDBList misEventos = (BasicDBList) cursor.next().get("eventos");
+        if (misEventos != null) {
+            for (Object misEvento : misEventos) {
+                BasicDBObject aux = (BasicDBObject) misEvento;
+                Evento evento = new Evento((String) aux.get("titulo"), (String) aux.get("descripcion"),
+                        (String) aux.get("lugar"), (Date) aux.get("fecha"), (String) aux.get("artista"),
+                        (Double) aux.get("precio"));
+                eventos.add(evento);
+            }
+        }
+        return eventos;
     }
 
     public void addEventos(String correo, List<Evento> eventos) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        BasicDBObject query = new BasicDBObject("_id", correo);
+        coll.update(query, new BasicDBObject("$unset", new BasicDBObject("eventos", 1)));
+
+        for (Evento evento : eventos) {
+            BasicDBObject eventoMongo = new BasicDBObject("titulo", evento.getTitulo())
+                    .append("artista", evento.getArtista())
+                    .append("fecha", evento.getFecha())
+                    .append("lugar", evento.getLugar())
+                    .append("precio", evento.getPrecio())
+                    .append("descripcion", evento.getDescripcion());
+
+            coll.update(query, new BasicDBObject("$push", new BasicDBObject("eventos", eventoMongo)));
+        }
     }
 
     public void updateArtista(String correo, String password, String nombreUsuario, String nombre, String apellidos, String descripcion) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        BasicDBObject query = new BasicDBObject("_id", correo);
+
+        coll.update(query, new BasicDBObject().append("$set", new BasicDBObject().append("nombre", nombre)));
+        coll.update(query, new BasicDBObject().append("$set", new BasicDBObject().append("password", password)));
+        coll.update(query, new BasicDBObject().append("$set", new BasicDBObject().append("nombreArtistico", nombreUsuario)));
+        coll.update(query, new BasicDBObject().append("$set", new BasicDBObject().append("apellidos", apellidos)));
+        coll.update(query, new BasicDBObject().append("$set", new BasicDBObject().append("descripcion", descripcion)));
     }
 }

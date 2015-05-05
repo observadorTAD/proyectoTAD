@@ -5,8 +5,6 @@
  */
 package modelo.entidades;
 
-import java.util.List;
-
 /**
  *
  * @author Alberto Lo
@@ -16,8 +14,6 @@ public interface Persona {
     String getApellidos();
 
     String getCorreo();
-
-    List<Evento> getEventos();
 
     String getNombre();
 

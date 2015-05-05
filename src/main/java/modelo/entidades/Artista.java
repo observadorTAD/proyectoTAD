@@ -51,10 +51,9 @@ public class Artista implements Persona{
     public String getApellidos() {
         return apellidos;
     }
-
-    @Override
-    public List<Evento> getEventos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+    public String getDescripcion(){
+        return descripcion;
     }
 
     @Override

@@ -8,12 +8,14 @@ import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.PasswordField;
+import com.vaadin.ui.TextArea;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.Window;
 import controlador.ArtistaController;
 import controlador.IPersonaController;
 import controlador.UsuarioController;
+import modelo.entidades.Artista;
 import modelo.entidades.Persona;
 
 public class EditDataView extends FormLayout implements View {
@@ -24,7 +26,7 @@ public class EditDataView extends FormLayout implements View {
     private final PasswordField newPassword = new PasswordField("Nueva contraseña");
     private final PasswordField passwordConf = new PasswordField("Confirmar contraseña");
     private TextField nombreUsuario;
-    private TextField descripcion = new TextField("Descrpición");
+    private TextArea descripcion = new TextArea("Descrpición");
     private final TextField nombre = new TextField("Nombre");
     private final TextField apellidos = new TextField("Apellidos");
     private final Button guardar = new Button("Guardar datos");
@@ -37,6 +39,7 @@ public class EditDataView extends FormLayout implements View {
         if (artista) {
             controller = new ArtistaController();
             nombreUsuario = new TextField("Nombre artistico");
+            descripcion.setValue(((Artista)usuario).getDescripcion());
         } else {
             controller = new UsuarioController();
             nombreUsuario = new TextField("Nombre de usuario");

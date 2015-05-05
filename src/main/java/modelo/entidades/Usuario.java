@@ -36,7 +36,6 @@ public class Usuario implements Persona{
         this.nombreUsuario = nombreUsuario;
     }
 
-    @Override
     public List<Evento> getEventos() {
         return eventos;
     }

@@ -13,14 +13,13 @@ import com.mongodb.DBObject;
 import java.util.List;
 import modelo.entidades.Artista;
 import modelo.entidades.Evento;
-import modelo.entidades.Persona;
 import modelo.entidades.Usuario;
 
 /**
  *
  * @author Alberto Lo
  */
-public class ArtistaDAO{
+public class ArtistaDAO {
 
     private final MongoDBJDBC jdbc;
     private final DBCollection coll;
@@ -66,7 +65,7 @@ public class ArtistaDAO{
         DBCursor cursor = coll.find(query);
         if (cursor.hasNext()) {
             DBObject aux = cursor.next();
-            artista = new Artista((String) aux.get("nombreArtistico"),(String) aux.get("descripcion"),
+            artista = new Artista((String) aux.get("nombreArtistico"), (String) aux.get("descripcion"),
                     (String) aux.get("_id"), (String) aux.get("password"),
                     (String) aux.get("nombre"), (String) aux.get("apellidos"));
         }

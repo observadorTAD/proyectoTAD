@@ -1,13 +1,12 @@
 package modelo.entidades;
 
 import java.util.List;
-import modelo.entidades.Persona;
 
 /**
  * Esta clase contine los métodos y atributos que pertenecen a la entidad
  * Usuario
  */
-public class Usuario implements Persona{
+public class Usuario implements Persona {
 
     private final String correo;
     private final String password;

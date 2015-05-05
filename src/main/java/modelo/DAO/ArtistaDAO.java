@@ -15,7 +15,6 @@ import java.util.Date;
 import java.util.List;
 import modelo.entidades.Artista;
 import modelo.entidades.Evento;
-import modelo.entidades.Persona;
 import modelo.entidades.Usuario;
 
 /**

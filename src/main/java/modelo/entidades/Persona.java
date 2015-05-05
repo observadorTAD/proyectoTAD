@@ -20,5 +20,5 @@ public interface Persona {
     String getNombreUsuario();
 
     String getPassword();
-    
+
 }

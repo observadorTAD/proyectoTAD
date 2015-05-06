@@ -61,4 +61,16 @@ public class UsuarioController implements IPersonaController {
     public boolean isArtista(String correo) {
         return false;
     }
+
+    public boolean loginAdmin(String correo, String password) {
+        return (correo.equals("admin") && password.equals("admin"));
+    }
+
+    public List<Usuario> getUsuarios() {
+        return usuarioDAO.getUsuarios();
+    }
+
+    public int countUsuarios() {
+        return usuarioDAO.countUsuarios();
+    }
 }

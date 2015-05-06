@@ -122,4 +122,21 @@ public class ArtistaDAO {
         coll.update(query, new BasicDBObject().append("$set", new BasicDBObject().append("apellidos", apellidos)));
         coll.update(query, new BasicDBObject().append("$set", new BasicDBObject().append("descripcion", descripcion)));
     }
+
+    public List<Artista> getArtistas() {
+        List<Artista> artistas = new ArrayList<>();
+        DBCursor cursor = coll.find();
+        while (cursor.hasNext()) {
+            DBObject aux = cursor.next();
+            Artista artista = new Artista((String) aux.get("nombreArtistico"), (String) aux.get("descripcion"),
+                    (String) aux.get("_id"), (String) aux.get("password"), (String) aux.get("nombre"),
+                    (String) aux.get("apellidos"));
+            artistas.add(artista);
+        }
+        return artistas;
+    }
+
+    public int countArtistas() {
+        return coll.find().count();
+    }
 }

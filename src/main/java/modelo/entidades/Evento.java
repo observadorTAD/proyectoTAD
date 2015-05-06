@@ -88,6 +88,18 @@ public class Evento {
         }
         return true;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 29 * hash + Objects.hashCode(this.titulo);
+        hash = 29 * hash + Objects.hashCode(this.descripcion);
+        hash = 29 * hash + Objects.hashCode(this.lugar);
+        hash = 29 * hash + Objects.hashCode(this.fecha);
+        hash = 29 * hash + Objects.hashCode(this.artista);
+        hash = 29 * hash + Objects.hashCode(this.precio);
+        return hash;
+    }
     
     
 

@@ -43,13 +43,38 @@ public class EventoDAO {
         List<Evento> eventos = new ArrayList<>();
         DBCursor cursor = coll.find();
         while (cursor.hasNext()) {
-                DBObject aux = cursor.next();
-                Evento evento = new Evento((String) aux.get("titulo"), (String) aux.get("descripcion"),
-                        (String) aux.get("lugar"), (Date) aux.get("fecha"), (String) aux.get("artista"),
-                        (Double) aux.get("precio"));
-                eventos.add(evento);
-            }
+            DBObject aux = cursor.next();
+            Evento evento = new Evento((String) aux.get("titulo"), (String) aux.get("descripcion"),
+                    (String) aux.get("lugar"), (Date) aux.get("fecha"), (String) aux.get("artista"),
+                    (Double) aux.get("precio"));
+            eventos.add(evento);
+        }
         return eventos;
+    }
+
+    public void removeEvent(String titulo, String artista, Date fecha) {
+        BasicDBObject query = new BasicDBObject("titulo", titulo)
+                .append("artista", artista)
+                .append("fecha", fecha);
+
+        coll.remove(query);
+    }
+
+    public void updateEvent(String tituloAnt, String artistaAnt, Date fechaAnt, String titulo, String lugar, Date fecha, Double precio, String descripcion, String artista) {
+        BasicDBObject query = new BasicDBObject("titulo", tituloAnt)
+                .append("artista", artistaAnt)
+                .append("fecha", fechaAnt);
+
+        coll.update(query, new BasicDBObject().append("$set", new BasicDBObject().append("titulo", titulo)));
+        coll.update(query, new BasicDBObject().append("$set", new BasicDBObject().append("descripcion", descripcion)));
+        coll.update(query, new BasicDBObject().append("$set", new BasicDBObject().append("lugar", lugar)));
+        coll.update(query, new BasicDBObject().append("$set", new BasicDBObject().append("fecha", fecha)));
+        coll.update(query, new BasicDBObject().append("$set", new BasicDBObject().append("artista", artista)));
+        coll.update(query, new BasicDBObject().append("$set", new BasicDBObject().append("precio", precio)));
+    }
+
+    public int countEventos() {
+        return coll.find().count();
     }
 
 }

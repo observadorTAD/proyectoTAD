@@ -16,7 +16,7 @@ import java.util.List;
 import modelo.entidades.Evento;
 
 /**
- *
+ * Clase encargada de la persistencia de la entidad Evento
  * @author Alberto Lo
  */
 public class EventoDAO {
@@ -24,11 +24,17 @@ public class EventoDAO {
     private final MongoDBJDBC jdbc;
     private final DBCollection coll;
 
+    /**
+     * Método encargado de inicializar los parámetros del driver JDBC para MongoDB
+     */
     public EventoDAO() {
         jdbc = new MongoDBJDBC();
         this.coll = jdbc.getCollection("eventos");
     }
-
+/**
+ * Guarda el evento en la persistencia
+ * @param evento 
+ */
     public void crearEvento(Evento evento) {
         BasicDBObject doc = new BasicDBObject("titulo", evento.getTitulo())
                 .append("artista", evento.getArtista())
@@ -38,7 +44,10 @@ public class EventoDAO {
                 .append("descripcion", evento.getDescripcion());
         coll.insert(doc);
     }
-
+/**
+ * Devuelve la lista de eventos guardados en el sistema
+ * @return eventos
+ */
     public List<Evento> getEventos() {
         List<Evento> eventos = new ArrayList<>();
         DBCursor cursor = coll.find();

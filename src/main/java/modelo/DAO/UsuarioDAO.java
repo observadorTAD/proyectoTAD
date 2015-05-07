@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modelo.DAO;
 
 import com.mongodb.BasicDBList;
@@ -17,7 +12,7 @@ import modelo.entidades.Evento;
 import modelo.entidades.Usuario;
 
 /**
- *
+ * Clase DAO encargada de la persistencia de la entidad usuario.
  * @author racede
  */
 public class UsuarioDAO {
@@ -25,11 +20,18 @@ public class UsuarioDAO {
     private final MongoDBJDBC jdbc;
     private final DBCollection coll;
 
+    /**
+     * Inicialización del driver JDBC para MongoDB
+     */
     public UsuarioDAO() {
         jdbc = new MongoDBJDBC();
         this.coll = jdbc.getCollection("usuarios");
     }
 
+    /**
+     * Guarda un nuevo usuario en la base de datos
+     * @param usuario 
+     */
     public void crearNuevoUsuario(Usuario usuario) {
         BasicDBObject doc = new BasicDBObject("_id", usuario.getCorreo())
                 .append("password", usuario.getPassword())
@@ -39,7 +41,12 @@ public class UsuarioDAO {
                 .append("eventos", new BasicDBList());
         coll.insert(doc);
     }
-
+/**
+ * Devuelve si la combinación correo/password proveida es correcta de acuerdo a los registros.
+ * @param correo
+ * @param password
+ * @return true/false
+ */
     public boolean isUser(String correo, String password) {
         boolean res = false;
         BasicDBObject query = new BasicDBObject("password", password)
@@ -50,6 +57,11 @@ public class UsuarioDAO {
         return res;
     }
 
+    /**
+     * Devuelve null si el usuario no existe, o el usuario que se pide.
+     * @param correo
+     * @return Usuario
+     */
     public Usuario getUsuario(String correo) {
         Usuario usuario = null;
         BasicDBObject query = new BasicDBObject("_id", correo);
@@ -63,7 +75,14 @@ public class UsuarioDAO {
         }
         return usuario;
     }
-
+/**
+ * Actualiza un usuario con los datos proveidos por el usuario
+ * @param correo
+ * @param password
+ * @param nombreUsuario
+ * @param nombre
+ * @param apellidos 
+ */
     public void updateUsuario(String correo, String password, String nombreUsuario, String nombre, String apellidos) {
         BasicDBObject query = new BasicDBObject("_id", correo);
 
@@ -73,12 +92,20 @@ public class UsuarioDAO {
         coll.update(query, new BasicDBObject().append("$set", new BasicDBObject().append("apellidos", apellidos)));
     }
 
+    /**
+     * Borra el usuario pasado por parámetros
+     * @param correo 
+     */
     public void removeUsuario(String correo) {
         BasicDBObject query = new BasicDBObject("_id", correo);
 
         coll.remove(query);
     }
-
+/**
+ * Añade un evento a un determinado usuario.
+ * @param correo
+ * @param eventos 
+ */
     public void addEventos(String correo, List<Evento> eventos) {
         BasicDBObject query = new BasicDBObject("_id", correo);
         coll.update(query, new BasicDBObject("$unset", new BasicDBObject("eventos", 1)));
@@ -95,7 +122,11 @@ public class UsuarioDAO {
         }
 
     }
-
+/**
+ * Devuelve de la persistencia los eventos asignados a un usuario
+ * @param correo
+ * @return Eventos
+ */
     public List<Evento> getEventos(String correo) {
         List<Evento> eventos = new ArrayList<>();
         BasicDBObject query = new BasicDBObject("_id", correo);

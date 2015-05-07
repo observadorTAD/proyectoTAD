@@ -35,30 +35,54 @@ public class Evento {
         this.fecha = fecha;
     }
 
+    /**
+     * Obtiene el titulo del evento
+     * @return Titulo
+     */
     public String getTitulo() {
         return titulo;
     }
 
+    /**
+     * Obtiene la descripción del evento
+     * @return Descripción
+     */
     public String getDescripcion() {
         return descripcion;
     }
 
+    /**
+     * Obtiene el lugar en el que el evento tendrá lugar
+     * @return Lugar
+     */
     public String getLugar() {
         return lugar;
     }
 
+    /**
+     * Obtiene la fecha del evento
+     * @return Fecha
+     */
     public Date getFecha() {
         return fecha;
     }
 
+    /**
+     * Devuelve el artista principal del evento
+     * @return Artista
+     */
     public String getArtista() {
         return artista;
     }
 
+    /**
+     * Devuelve el precio de asistencia al evento
+     * @return 
+     */
     public Double getPrecio() {
         return precio;
     }
-
+    
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {

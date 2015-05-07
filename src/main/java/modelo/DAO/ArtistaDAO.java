@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modelo.DAO;
 
 import com.mongodb.BasicDBList;
@@ -18,19 +13,24 @@ import modelo.entidades.Evento;
 import modelo.entidades.Usuario;
 
 /**
- *
+ * Clase DAO para la entidad Artista
  * @author Alberto Lo
  */
 public class ArtistaDAO {
 
     private final MongoDBJDBC jdbc;
     private final DBCollection coll;
-
+/**
+ * Inicialización del driver JDBC para MongoDB
+ */
     public ArtistaDAO() {
         jdbc = new MongoDBJDBC();
         this.coll = jdbc.getCollection("artistas");
     }
-
+/**
+ * Guarda un artista en la persistencia
+ * @param usuario 
+ */
     public void crearNuevoArtista(Usuario usuario) {
         BasicDBObject doc = new BasicDBObject("_id", usuario.getCorreo())
                 .append("password", usuario.getPassword())
@@ -41,7 +41,11 @@ public class ArtistaDAO {
                 .append("descripcion", "");
         coll.insert(doc);
     }
-
+/**
+ * Devuelve si un usuario está ya en la BD o no
+ * @param user
+ * @return resultado
+ */
     public boolean isUser(String user) {
         boolean res = false;
         BasicDBObject query = new BasicDBObject("_id", user);
@@ -50,7 +54,12 @@ public class ArtistaDAO {
         }
         return res;
     }
-
+/**
+ * Devuelve si una combinación de contraseña e email vinculada a un artista.
+ * @param email
+ * @param pass
+ * @return resultado
+ */
     public boolean login(String email, String pass) {
         boolean res = false;
         BasicDBObject query = new BasicDBObject("password", pass)
@@ -60,7 +69,11 @@ public class ArtistaDAO {
         }
         return res;
     }
-
+/**
+ * Devuelve un artista, con todos sus valores de la persistencia dada la clave principal proveida.
+ * @param correo
+ * @return artista
+ */
     public Artista getArtista(String correo) {
         Artista artista = null;
         BasicDBObject query = new BasicDBObject("_id", correo);
@@ -73,13 +86,20 @@ public class ArtistaDAO {
         }
         return artista;
     }
-
+/**
+ * Borra un artista de la persistencia.
+ * @param correo 
+ */
     public void removeArtista(String correo) {
         BasicDBObject query = new BasicDBObject("_id", correo);
 
         coll.remove(query);
     }
-
+/**
+ * Devuelve todos los eventos organizados por un artista.
+ * @param correo
+ * @return Eventos
+ */
     public List<Evento> getEventos(String correo) {
         List<Evento> eventos = new ArrayList<>();
         BasicDBObject query = new BasicDBObject("_id", correo);
@@ -96,7 +116,11 @@ public class ArtistaDAO {
         }
         return eventos;
     }
-
+/**
+ * Añade a un determinado artista una lista de eventos.
+ * @param correo
+ * @param eventos 
+ */
     public void addEventos(String correo, List<Evento> eventos) {
         BasicDBObject query = new BasicDBObject("_id", correo);
         coll.update(query, new BasicDBObject("$unset", new BasicDBObject("eventos", 1)));
@@ -112,7 +136,15 @@ public class ArtistaDAO {
             coll.update(query, new BasicDBObject("$push", new BasicDBObject("eventos", eventoMongo)));
         }
     }
-
+/**
+ * Actualiza los valores de un artista.
+ * @param correo
+ * @param password
+ * @param nombreUsuario
+ * @param nombre
+ * @param apellidos
+ * @param descripcion 
+ */
     public void updateArtista(String correo, String password, String nombreUsuario, String nombre, String apellidos, String descripcion) {
         BasicDBObject query = new BasicDBObject("_id", correo);
 

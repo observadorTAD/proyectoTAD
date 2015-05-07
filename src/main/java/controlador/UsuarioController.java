@@ -79,14 +79,45 @@ public class UsuarioController implements IPersonaController {
     public void addEventos(String correo, List<Evento> eventos) {
         usuarioDAO.addEventos(correo, eventos);
     }
-
+/**
+ * Devuelve la lista de eventos a los que asiste un usuario
+ * @param correo
+ * @return eventos
+ */
     @Override
     public List<Evento> getEventos(String correo) {
         return usuarioDAO.getEventos(correo);
     }
-
+/**
+ * Devuelve si un artista está registrado en el sistema.
+ * @param correo
+ * @return resultado
+ */
     @Override
     public boolean isArtista(String correo) {
         return false;
+    }
+/**
+ * Devuelve si una combinación de correo y contraseña es correcta.
+ * @param correo
+ * @param password
+ * @return resultado
+ */
+    public boolean loginAdmin(String correo, String password) {
+        return (correo.equals("admin") && password.equals("admin"));
+    }
+/**
+ * Devuelve todos los usuarios registrados.
+ * @return usuarios
+ */
+    public List<Usuario> getUsuarios() {
+        return usuarioDAO.getUsuarios();
+    }
+/**
+ * Indica el número de usuarios registrados
+ * @return numero de usuarios
+ */
+    public int countUsuarios() {
+        return usuarioDAO.countUsuarios();
     }
 }

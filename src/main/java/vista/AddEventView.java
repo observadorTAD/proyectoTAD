@@ -17,6 +17,7 @@ import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.HorizontalSplitPanel;
 import com.vaadin.ui.Label;
+import com.vaadin.ui.Notification;
 import com.vaadin.ui.Table;
 import com.vaadin.ui.VerticalLayout;
 import controlador.EventoController;
@@ -68,13 +69,18 @@ public class AddEventView extends VerticalLayout implements View {
         misEventos.addContainerProperty("Título", String.class, null);
         misEventos.addContainerProperty("Artista", String.class, null);
         for (int i = 0; i < listaEventoUsuario.size(); i++) {
-            misEventos.addItem(new Object[]{listaEventoUsuario.get(i).getTitulo(),
-                listaEventoUsuario.get(i).getArtista()},
-                    listaEventos.indexOf(listaEventoUsuario.get(i)));
+            int enc = listaEventos.indexOf(listaEventoUsuario.get(i));
+            System.out.println(enc);
+            System.out.println(listaEventoUsuario.get(i).getTitulo());
+            if (enc >= 0) {
+                misEventos.addItem(new Object[]{listaEventoUsuario.get(i).getTitulo(),
+                    listaEventoUsuario.get(i).getArtista()}, enc);
+            }
         }
         misEventos.setPageLength(todosEventos.getVisibleItemIds().size());
         misEventos.setSelectable(true);
         misEventos.setImmediate(true);
+        misEventos.setWidth("80%");
 
         //Por defecto aparece el primer evento
         titulo.setValue(listaEventos.get(0).getTitulo());
@@ -156,11 +162,10 @@ public class AddEventView extends VerticalLayout implements View {
                 Collection miListaEventos = misEventos.getItemIds();
                 List<Evento> miListaDefinitiva = new ArrayList<>();
                 for (Object miListaEvento : miListaEventos) {
-                    if ((int) miListaEvento > 0) {
-                        miListaDefinitiva.add(listaEventos.get((int) miListaEvento));
-                    }
+                    miListaDefinitiva.add(listaEventos.get((int) miListaEvento));
                 }
                 usuarioController.addEventos(usuario.getCorreo(), miListaDefinitiva);
+                Notification.show("Lista actualizada con éxito");
             }
         });
 

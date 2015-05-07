@@ -6,7 +6,6 @@ import javax.servlet.annotation.WebServlet;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.annotations.Widgetset;
-import com.vaadin.data.util.ObjectProperty;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
@@ -36,6 +35,7 @@ public class MyEventUI extends UI {
         navigator.addView(LoginView.NAME, new LoginView());
         navigator.addView(RegisterView.NAME, new RegisterView());
         navigator.addView(MainView.NAME, new MainView());
+        navigator.addView(MainAdminView.NAME, new MainAdminView());
     }
 
     @WebServlet(value = {"/myevent/*", "/*"}, name = "MyEventServlet", asyncSupported = true)

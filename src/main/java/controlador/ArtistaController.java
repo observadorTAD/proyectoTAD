@@ -106,5 +106,20 @@ public class ArtistaController implements IPersonaController {
     public void updateUsuario(String correo, String password, String nombreUsuario, String nombre, String apellidos, String descripcion) {
         artistaDAO.updateArtista(correo, password, nombreUsuario, nombre, apellidos, descripcion);
     }
+/**
+ * Devuelve todos los artistas registrados
+ * @return artistas
+ */
+    public List<Artista> getArtistas() {
+        return artistaDAO.getArtistas();
+    }
+    
+    /**
+     * Devuelve el numero de artistas registrados.
+     * @return numero de artistas
+     */
+    public int countArtitas(){
+        return artistaDAO.countArtistas();
+    }
 
 }

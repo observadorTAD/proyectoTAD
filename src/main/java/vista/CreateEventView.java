@@ -33,7 +33,7 @@ public class CreateEventView extends FormLayout implements View {
                     if (!fecha.isEmpty() && !titulo.isEmpty() && !lugar.isEmpty() && isNumeric(precio.getValue())) {
                         String artista = usuario.getNombre();
                         //Debe ser el nombreArtistico del artista
-                        eventoController.crearEvento(titulo.getValue(), lugar.getValue(), fecha.getValue(), precio.getValue(), descripcion.getValue(), artista);
+                        eventoController.crearEvento(titulo.getValue(), lugar.getValue(), fecha.getValue(), precio.getValue(), descripcion.getValue(), usuario.getNombreUsuario());
                         UI.getCurrent().getNavigator().navigateTo(MainView.NAME);
                         Notification.show("¡Evento creado!", "Ha creado el evento con exito", Notification.Type.HUMANIZED_MESSAGE);
                     } else {

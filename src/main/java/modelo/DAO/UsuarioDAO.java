@@ -131,16 +131,40 @@ public class UsuarioDAO {
         List<Evento> eventos = new ArrayList<>();
         BasicDBObject query = new BasicDBObject("_id", correo);
         DBCursor cursor = coll.find(query);
-        BasicDBList misEventos = (BasicDBList) cursor.next().get("eventos");
-        if (misEventos != null) {
-            for (Object misEvento : misEventos) {
-                BasicDBObject aux = (BasicDBObject) misEvento;
-                Evento evento = new Evento((String) aux.get("titulo"), (String) aux.get("descripcion"),
-                        (String) aux.get("lugar"), (Date) aux.get("fecha"), (String) aux.get("artista"),
-                        (Double) aux.get("precio"));
-                eventos.add(evento);
+        if (cursor.hasNext()) {
+            BasicDBList misEventos = (BasicDBList) cursor.next().get("eventos");
+            if (misEventos != null) {
+                for (Object misEvento : misEventos) {
+                    BasicDBObject aux = (BasicDBObject) misEvento;
+                    Evento evento = new Evento((String) aux.get("titulo"), (String) aux.get("descripcion"),
+                            (String) aux.get("lugar"), (Date) aux.get("fecha"), (String) aux.get("artista"),
+                            (Double) aux.get("precio"));
+                    eventos.add(evento);
+                }
             }
         }
         return eventos;
+    }
+/**
+ * Devuelve una lista con los usuarios registrados en el sistema.
+ * @return usuarios
+ */
+    public List<Usuario> getUsuarios() {
+        List<Usuario> usuarios = new ArrayList<>();
+        DBCursor cursor = coll.find();
+        while (cursor.hasNext()) {
+            DBObject aux = cursor.next();
+            Usuario usuario = new Usuario((String) aux.get("nombreUsuario"), null, (String) aux.get("_id"),
+                    (String) aux.get("password"), (String) aux.get("nombre"), (String) aux.get("apellidos"));
+            usuarios.add(usuario);
+        }
+        return usuarios;
+    }
+/**
+ * Devuelve la cantidad de usuarios registrados que hay
+ * @return numero de usuarios
+ */
+    public int countUsuarios() {
+        return coll.find().count();
     }
 }

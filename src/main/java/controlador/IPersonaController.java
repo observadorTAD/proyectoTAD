@@ -10,7 +10,7 @@ import modelo.entidades.Evento;
 import modelo.entidades.Persona;
 
 /**
- *
+ * Interfaz del controlador de persona
  * @author Alberto Lo
  */
 public interface IPersonaController {

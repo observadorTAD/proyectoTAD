@@ -1,7 +1,7 @@
 package modelo.DAO;
 
 /**
- *
+ * Clase genérica DAO encargada de gestionar la conexión con la persistencia con las otras clases DAO.
  * @author racede
  */
 import com.mongodb.MongoClient;
@@ -12,7 +12,9 @@ public class MongoDBJDBC {
 
     private MongoClient mongoClient;
     private DB db;
-
+/**
+ * Inicialización de los parámetros de conexión
+ */
     public MongoDBJDBC() {
         try {
             mongoClient = new MongoClient("localhost", 27017); // Now connect to your databases
@@ -21,7 +23,11 @@ public class MongoDBJDBC {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
         }
     }
-
+/**
+ * Devuelve una colección de la persistencia. Si no existe, la crea.
+ * @param collection
+ * @return Colección
+ */
     public DBCollection getCollection(String collection) {
         DBCollection coll = null;
         if (db.collectionExists(collection)) {

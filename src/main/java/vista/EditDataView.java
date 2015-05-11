@@ -18,6 +18,10 @@ import controlador.UsuarioController;
 import modelo.entidades.Artista;
 import modelo.entidades.Persona;
 
+/**
+ *
+ * @author racede
+ */
 public class EditDataView extends FormLayout implements View {
 
     private IPersonaController controller;
@@ -35,6 +39,11 @@ public class EditDataView extends FormLayout implements View {
     private final Button eliminarCuenta = new Button("Eliminar Cuenta");
     private final Button confirmarBorrar = new Button("Confirmar");
 
+    /**
+     *
+     * @param usuario
+     * @param artista
+     */
     public EditDataView(final Persona usuario, boolean artista) {
         if (artista) {
             controller = new ArtistaController();

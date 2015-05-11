@@ -7,14 +7,34 @@ package modelo.entidades;
  */
 public interface Persona {
 
+    /**
+     *
+     * @return
+     */
     String getApellidos();
 
+    /**
+     *
+     * @return
+     */
     String getCorreo();
 
+    /**
+     *
+     * @return
+     */
     String getNombre();
 
+    /**
+     *
+     * @return
+     */
     String getNombreUsuario();
 
+    /**
+     *
+     * @return
+     */
     String getPassword();
 
 }

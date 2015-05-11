@@ -15,6 +15,7 @@ import com.vaadin.ui.UI;
 
 /**
  *
+ * @author racede
  */
 @Theme("mytheme")
 @Widgetset("com.grupo1.myevent.MyAppWidgetset")
@@ -38,6 +39,9 @@ public class MyEventUI extends UI {
         navigator.addView(MainAdminView.NAME, new MainAdminView());
     }
 
+    /**
+     *
+     */
     @WebServlet(value = {"/myevent/*", "/*"}, name = "MyEventServlet", asyncSupported = true)
     @VaadinServletConfiguration(ui = MyEventUI.class, productionMode = false, heartbeatInterval = 10, closeIdleSessions = true)
     public static class MyEventServlet extends VaadinServlet {

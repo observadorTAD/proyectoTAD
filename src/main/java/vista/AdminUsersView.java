@@ -40,6 +40,9 @@ public class AdminUsersView extends VerticalLayout implements View {
     private final HorizontalLayout botones = new HorizontalLayout();
     private final UsuarioController usuarioController = new UsuarioController();
 
+    /**
+     *
+     */
     public AdminUsersView() {
         final List<Usuario> listaUsuarios = usuarioController.getUsuarios();
 

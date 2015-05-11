@@ -24,8 +24,15 @@ import controlador.UsuarioController;
 import modelo.DAO.UsuarioDAO;
 import modelo.entidades.Usuario;
 
+/**
+ *
+ * @author racede
+ */
 public class LoginView extends VerticalLayout implements View {
 
+    /**
+     *
+     */
     public static final String NAME = "";
     private final Panel loginPanel = new Panel("Login");
     private final FormLayout loginForm = new FormLayout();
@@ -37,6 +44,9 @@ public class LoginView extends VerticalLayout implements View {
     private final UsuarioController usuarioController = new UsuarioController();
     private final ArtistaController artistaController = new ArtistaController();
 
+    /**
+     *
+     */
     public LoginView() {
 
         registrarse.addClickListener(new ClickListener() {

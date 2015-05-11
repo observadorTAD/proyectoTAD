@@ -78,7 +78,7 @@ public class ArtistaController implements IPersonaController {
     }
 /**
  * Indica si un correo está registrado en el sistema como artista.
- * @param correo
+ * @param correo 
  * @return artista
  */
     @Override

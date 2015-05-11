@@ -18,8 +18,15 @@ import controlador.UsuarioController;
 import modelo.entidades.Persona;
 import modelo.entidades.Usuario;
 
+/**
+ *
+ * @author racede
+ */
 public class MainView extends VerticalLayout implements View {
 
+    /**
+     *
+     */
     public static final String NAME = "main";
     private final HorizontalSplitPanel menuContent = new HorizontalSplitPanel();
     private final Accordion nav = new Accordion();
@@ -27,6 +34,9 @@ public class MainView extends VerticalLayout implements View {
     private Persona usuario = new Usuario(NAME, null, NAME, NAME, NAME, NAME);
     private IPersonaController controller;
 
+    /**
+     *
+     */
     public MainView() {
         nav.addSelectedTabChangeListener(
                 new TabSheet.SelectedTabChangeListener() {

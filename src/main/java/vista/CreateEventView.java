@@ -13,6 +13,10 @@ import controlador.ArtistaController;
 import controlador.EventoController;
 import modelo.entidades.Persona;
 
+/**
+ *
+ * @author racede
+ */
 public class CreateEventView extends FormLayout implements View {
 
     private final TextField titulo = new TextField("Título del evento");
@@ -24,6 +28,11 @@ public class CreateEventView extends FormLayout implements View {
     private EventoController eventoController = new EventoController();
     private ArtistaController artistaController = new ArtistaController();
 
+    /**
+     *
+     * @param usuario
+     * @param artista
+     */
     public CreateEventView(final Persona usuario, boolean artista) {
         if (artista) {
             crear.addClickListener(new Button.ClickListener() {

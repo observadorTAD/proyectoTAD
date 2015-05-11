@@ -13,12 +13,22 @@ import com.vaadin.ui.TabSheet.SelectedTabChangeEvent;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
+/**
+ *
+ * @author racede
+ */
 public class MainAdminView extends VerticalLayout implements View {
 
+    /**
+     *
+     */
     public static final String NAME = "mainAdmin";
     private static final HorizontalSplitPanel menuContent = new HorizontalSplitPanel();
     private final Accordion nav = new Accordion();
 
+    /**
+     *
+     */
     public MainAdminView() {
         nav.addSelectedTabChangeListener(
                 new TabSheet.SelectedTabChangeListener() {
@@ -76,6 +86,10 @@ public class MainAdminView extends VerticalLayout implements View {
         }
     }
 
+    /**
+     *
+     * @param vista
+     */
     public static void refresh(String vista) {
         switch (vista) {
             case "Usuarios":

@@ -36,6 +36,10 @@ public class PrincipalUserView extends VerticalLayout implements View {
     private final VerticalLayout descripcionEvento = new VerticalLayout();
     private final UsuarioController usuarioController = new UsuarioController();
 
+    /**
+     *
+     * @param usuario
+     */
     public PrincipalUserView(Persona usuario) {
         final List<Evento> listaEventoUsuario = usuarioController.getEventos(usuario.getCorreo());
         //Establecer características a la tabla con todos los eventos del usuario

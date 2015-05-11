@@ -83,6 +83,11 @@ public class Evento {
         return precio;
     }
     
+    /**
+     *
+     * @param obj
+     * @return
+     */
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {
@@ -113,6 +118,10 @@ public class Evento {
         return true;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int hashCode() {
         int hash = 7;

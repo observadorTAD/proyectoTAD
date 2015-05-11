@@ -8,6 +8,10 @@ import com.mongodb.MongoClient;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
 
+/**
+ *
+ * @author racede
+ */
 public class MongoDBJDBC {
 
     private MongoClient mongoClient;

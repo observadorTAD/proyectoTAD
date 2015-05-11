@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package vista;
 
 import com.vaadin.data.Item;
@@ -29,7 +24,7 @@ import modelo.entidades.Evento;
 import modelo.entidades.Persona;
 
 /**
- *
+ * Vista para añadir nuevos eventos de los usuarios
  * @author racede
  */
 public class AddEventView extends VerticalLayout implements View {
@@ -49,6 +44,11 @@ public class AddEventView extends VerticalLayout implements View {
     private final EventoController eventoController = new EventoController();
     private final UsuarioController usuarioController = new UsuarioController();
 
+    /**
+     * Constructor de la vista. Esta vista permite añadir eventos entre 
+     * dos tablas mediante la técnica drag and drop.
+     * @param usuario
+     */
     public AddEventView(final Persona usuario) {
         final List<Evento> listaEventos = eventoController.getEventos();
         List<Evento> listaEventoUsuario = usuarioController.getEventos(usuario.getCorreo());

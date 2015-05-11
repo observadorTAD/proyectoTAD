@@ -43,6 +43,9 @@ public class AdminEventView extends VerticalLayout implements View {
     private final HorizontalLayout botones = new HorizontalLayout();
     private final EventoController eventoController = new EventoController();
 
+    /**
+     *
+     */
     public AdminEventView() {
         final List<Evento> listaEventos = eventoController.getEventos();
 

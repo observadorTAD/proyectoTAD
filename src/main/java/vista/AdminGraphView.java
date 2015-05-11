@@ -25,6 +25,10 @@ public class AdminGraphView extends HorizontalLayout implements View {
 private final UsuarioController usuarioController = new UsuarioController();
 private final ArtistaController artistaController = new ArtistaController();
 private final EventoController eventoController = new EventoController();
+
+    /**
+     *
+     */
     public AdminGraphView() {
         setMargin(true);
 

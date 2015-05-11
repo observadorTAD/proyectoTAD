@@ -21,8 +21,15 @@ import com.vaadin.ui.VerticalLayout;
 import controlador.ArtistaController;
 import controlador.UsuarioController;
 
+/**
+ *
+ * @author racede
+ */
 public class RegisterView extends VerticalLayout implements View {
 
+    /**
+     *
+     */
     public static final String NAME = "registro";
     private final Panel loginPanel = new Panel("Registrarse");
     private final FormLayout loginForm = new FormLayout();
@@ -41,6 +48,9 @@ public class RegisterView extends VerticalLayout implements View {
     private final Button registrarse = new Button("Registrarse");
     private final Button volver = new Button("Volver");
 
+    /**
+     *
+     */
     public RegisterView() {
 
         registrarse.addClickListener(new ClickListener() {

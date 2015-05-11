@@ -11,14 +11,7 @@ import modelo.entidades.Usuario;
  * @author Alberto Lo
  */
 public class ArtistaController implements IPersonaController {
-/**
- * Devuelve un artista dado un email.
- * @param artista
- * @return artista
- */
-    public Artista getArtista(String artista) {
-        return new Artista(artista, artista, artista, artista, artista, artista);
-    }
+
 
     private final ArtistaDAO artistaDAO;
 /**

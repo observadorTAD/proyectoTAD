@@ -20,7 +20,8 @@ import java.util.List;
 import modelo.entidades.Usuario;
 
 /**
- *
+ * Vista de administrador para gestionar los usuarios. Muestra una tabla 
+ * de usuarios y realizar las operaciones CRUD sobre la entidad.
  * @author racede
  */
 public class AdminUsersView extends VerticalLayout implements View {
@@ -41,7 +42,7 @@ public class AdminUsersView extends VerticalLayout implements View {
     private final UsuarioController usuarioController = new UsuarioController();
 
     /**
-     *
+     * Constructor de la vista
      */
     public AdminUsersView() {
         final List<Usuario> listaUsuarios = usuarioController.getUsuarios();

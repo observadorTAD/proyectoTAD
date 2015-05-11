@@ -18,6 +18,11 @@
 	</properties>
 
 	<repositories>
+            <repository>
+            <id>org.springframework.maven.milestone</id>
+            <name>Spring Framework Maven Milestone Repository</name> 
+            <url>http://maven.springframework.org/milestone</url>
+        </repository>
 		<repository>
 			<id>vaadin-addons</id>
 			<url>http://maven.vaadin.com/vaadin-addons</url>
@@ -35,6 +40,11 @@
 	</repositories>
 
 	<dependencies>
+            <dependency>
+            <groupId>org.cloudfoundry</groupId> 
+            <artifactId>cloudfoundry-runtime</artifactId> 
+            <version>0.8.6</version>
+        </dependency>
             <dependency>
       <groupId>com.vaadin.addon</groupId>
       <artifactId>vaadin-charts</artifactId>

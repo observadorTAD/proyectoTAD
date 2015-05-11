@@ -13,13 +13,12 @@ import com.vaadin.ui.Label;
 import com.vaadin.ui.Table;
 import com.vaadin.ui.VerticalLayout;
 import controlador.UsuarioController;
-import java.util.ArrayList;
 import java.util.List;
 import modelo.entidades.Evento;
 import modelo.entidades.Persona;
 
 /**
- *
+ * Vista principal del usuario. Muestra una tabla con los eventos del usuario.
  * @author racede
  */
 public class PrincipalUserView extends VerticalLayout implements View {
@@ -37,8 +36,8 @@ public class PrincipalUserView extends VerticalLayout implements View {
     private final UsuarioController usuarioController = new UsuarioController();
 
     /**
-     *
-     * @param usuario
+     * Constructor de la vista
+     * @param usuario Usuario actual
      */
     public PrincipalUserView(Persona usuario) {
         final List<Evento> listaEventoUsuario = usuarioController.getEventos(usuario.getCorreo());

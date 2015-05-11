@@ -22,7 +22,8 @@ import java.util.List;
 import modelo.entidades.Evento;
 
 /**
- *
+ * Vista de administrador para gestionar los eventos. Muestra una tabla 
+ * de eventos y permite realizar las operaciones CRUD sobre la entidad.
  * @author racede
  */
 public class AdminEventView extends VerticalLayout implements View {
@@ -44,7 +45,7 @@ public class AdminEventView extends VerticalLayout implements View {
     private final EventoController eventoController = new EventoController();
 
     /**
-     *
+     * Constructor de la vista.
      */
     public AdminEventView() {
         final List<Evento> listaEventos = eventoController.getEventos();

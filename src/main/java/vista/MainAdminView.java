@@ -14,20 +14,20 @@ import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
 /**
- *
+ * Vista principal de administrador
  * @author racede
  */
 public class MainAdminView extends VerticalLayout implements View {
 
     /**
-     *
+     * Parámetro para introducir la vista en el navigator
      */
     public static final String NAME = "mainAdmin";
     private static final HorizontalSplitPanel menuContent = new HorizontalSplitPanel();
     private final Accordion nav = new Accordion();
 
     /**
-     *
+     * Constructor de la vista.
      */
     public MainAdminView() {
         nav.addSelectedTabChangeListener(
@@ -87,8 +87,8 @@ public class MainAdminView extends VerticalLayout implements View {
     }
 
     /**
-     *
-     * @param vista
+     * Método creado para refrescar la vista cuando se produce un cambio.
+     * @param vista Vista a refrescar
      */
     public static void refresh(String vista) {
         switch (vista) {

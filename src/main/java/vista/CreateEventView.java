@@ -14,7 +14,8 @@ import controlador.EventoController;
 import modelo.entidades.Persona;
 
 /**
- *
+ * Vista para crear un evento. La vista controla que solo los artistas puedan 
+ * crear eventos.
  * @author racede
  */
 public class CreateEventView extends FormLayout implements View {
@@ -29,9 +30,9 @@ public class CreateEventView extends FormLayout implements View {
     private ArtistaController artistaController = new ArtistaController();
 
     /**
-     *
-     * @param usuario
-     * @param artista
+     * Constructor de la vista
+     * @param usuario Usuario actual
+     * @param artista boolean si es artista o no
      */
     public CreateEventView(final Persona usuario, boolean artista) {
         if (artista) {

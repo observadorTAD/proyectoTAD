@@ -1,8 +1,5 @@
 package vista;
 
-import com.google.gwt.aria.client.ArticleRole;
-import com.vaadin.annotations.PreserveOnRefresh;
-import com.vaadin.data.util.ObjectProperty;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.server.VaadinSession;
@@ -21,17 +18,16 @@ import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 import controlador.ArtistaController;
 import controlador.UsuarioController;
-import modelo.DAO.UsuarioDAO;
-import modelo.entidades.Usuario;
 
 /**
- *
+ * Vista de login.
  * @author racede
  */
 public class LoginView extends VerticalLayout implements View {
 
     /**
-     *
+     * Parámetro para el nombre de la vista en el navigator de vaadin. Es la 
+     * vista por defecto
      */
     public static final String NAME = "";
     private final Panel loginPanel = new Panel("Login");
@@ -45,7 +41,7 @@ public class LoginView extends VerticalLayout implements View {
     private final ArtistaController artistaController = new ArtistaController();
 
     /**
-     *
+     * Constructor de la vista.
      */
     public LoginView() {
 

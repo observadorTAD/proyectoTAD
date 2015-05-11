@@ -22,13 +22,13 @@ import controlador.ArtistaController;
 import controlador.UsuarioController;
 
 /**
- *
+ * Vista para registrar nuevos usuarios.
  * @author racede
  */
 public class RegisterView extends VerticalLayout implements View {
 
     /**
-     *
+     * Parámetro para el navigator de vaadin.
      */
     public static final String NAME = "registro";
     private final Panel loginPanel = new Panel("Registrarse");
@@ -49,7 +49,7 @@ public class RegisterView extends VerticalLayout implements View {
     private final Button volver = new Button("Volver");
 
     /**
-     *
+     * Constructor de la vista.
      */
     public RegisterView() {
 

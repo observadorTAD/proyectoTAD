@@ -19,7 +19,7 @@ import modelo.entidades.Artista;
 import modelo.entidades.Persona;
 
 /**
- *
+ * Vista para editar los datos de los usuarios o artistas.
  * @author racede
  */
 public class EditDataView extends FormLayout implements View {
@@ -40,9 +40,9 @@ public class EditDataView extends FormLayout implements View {
     private final Button confirmarBorrar = new Button("Confirmar");
 
     /**
-     *
-     * @param usuario
-     * @param artista
+     * Constructor de la vista
+     * @param usuario Usuario actual
+     * @param artista boolean si es artista o no
      */
     public EditDataView(final Persona usuario, boolean artista) {
         if (artista) {

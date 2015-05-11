@@ -20,7 +20,8 @@ import java.util.List;
 import modelo.entidades.Artista;
 
 /**
- * Vista de administrador para gestionar los artistas.
+ * Vista de administrador para gestionar los artistas. Muestra una tabla 
+ * de artistas y permite realizar las operaciones CRUD sobre la entidad.
  * @author racede
  */
 public class AdminArtistView extends VerticalLayout implements View {
@@ -42,7 +43,7 @@ public class AdminArtistView extends VerticalLayout implements View {
     private final ArtistaController artistaController = new ArtistaController();
 
     /**
-     *
+     * Constructor de la vista
      */
     public AdminArtistView() {
         final List<Artista> listaArtistas = artistaController.getArtistas();

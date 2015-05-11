@@ -18,7 +18,7 @@ import controlador.EventoController;
 import controlador.UsuarioController;
 
 /**
- *
+ * Vista de administrador para gestionar los gráficos de la aplicación. 
  * @author racede
  */
 public class AdminGraphView extends HorizontalLayout implements View {
@@ -27,7 +27,7 @@ private final ArtistaController artistaController = new ArtistaController();
 private final EventoController eventoController = new EventoController();
 
     /**
-     *
+     * Constructor de la vista.
      */
     public AdminGraphView() {
         setMargin(true);

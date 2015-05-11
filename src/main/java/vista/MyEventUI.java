@@ -14,7 +14,7 @@ import com.vaadin.ui.Label;
 import com.vaadin.ui.UI;
 
 /**
- *
+ * Interfaz de usuario del programa.
  * @author racede
  */
 @Theme("mytheme")
@@ -40,7 +40,7 @@ public class MyEventUI extends UI {
     }
 
     /**
-     *
+     * Servlet de la aplicación
      */
     @WebServlet(value = {"/myevent/*", "/*"}, name = "MyEventServlet", asyncSupported = true)
     @VaadinServletConfiguration(ui = MyEventUI.class, productionMode = false, heartbeatInterval = 10, closeIdleSessions = true)

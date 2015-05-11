@@ -85,7 +85,13 @@
             <artifactId>vaadin-themes</artifactId>
             <version>${vaadin.version}</version>
         </dependency>
-    </dependencies>
+	 <dependency>
+	  <groupId>org.cloudfoundry</groupId>
+	  <artifactId>cloudfoundry-runtime</artifactId>
+	  <version>0.8.6</version>
+	  <type>jar</type>
+	 </dependency>
+	</dependencies>
 
     <build>
         <plugins>

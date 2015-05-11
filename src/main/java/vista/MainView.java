@@ -19,7 +19,7 @@ import modelo.entidades.Persona;
 import modelo.entidades.Usuario;
 
 /**
- *
+ * Vista principal de los usuarios.
  * @author racede
  */
 public class MainView extends VerticalLayout implements View {
@@ -35,7 +35,7 @@ public class MainView extends VerticalLayout implements View {
     private IPersonaController controller;
 
     /**
-     *
+     * Constructor de la vista.
      */
     public MainView() {
         nav.addSelectedTabChangeListener(

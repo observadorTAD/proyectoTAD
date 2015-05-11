@@ -24,7 +24,8 @@ import modelo.entidades.Evento;
 import modelo.entidades.Persona;
 
 /**
- * Vista para añadir nuevos eventos de los usuarios
+ * Vista para añadir nuevos eventos a los usuarios. Esta vista permite añadir eventos entre 
+ * dos tablas mediante la técnica drag and drop.
  * @author racede
  */
 public class AddEventView extends VerticalLayout implements View {
@@ -45,8 +46,7 @@ public class AddEventView extends VerticalLayout implements View {
     private final UsuarioController usuarioController = new UsuarioController();
 
     /**
-     * Constructor de la vista. Esta vista permite añadir eventos entre 
-     * dos tablas mediante la técnica drag and drop.
+     * Constructor de la vista. 
      * @param usuario
      */
     public AddEventView(final Persona usuario) {

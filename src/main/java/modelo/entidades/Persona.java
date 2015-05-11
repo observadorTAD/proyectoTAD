@@ -8,32 +8,32 @@ package modelo.entidades;
 public interface Persona {
 
     /**
-     *
-     * @return
+     * Devuelve los apellidos de una persona
+     * @return apellidos
      */
     String getApellidos();
 
     /**
-     *
-     * @return
+     * Devuelve el correo electronico de una persona
+     * @return correo
      */
     String getCorreo();
 
     /**
-     *
-     * @return
+     * Devuelve el nombre de una persona
+     * @return nombre
      */
     String getNombre();
 
-    /**
-     *
-     * @return
+    /** 
+     * Devuelve el nombre de usuario de una persona
+     * @return nombreusuario
      */
     String getNombreUsuario();
 
     /**
-     *
-     * @return
+     * Devuelve la contraseña de una persona
+     * @return contraseña
      */
     String getPassword();
 

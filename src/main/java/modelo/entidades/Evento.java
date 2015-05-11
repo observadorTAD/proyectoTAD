@@ -84,9 +84,9 @@ public class Evento {
     }
     
     /**
-     *
+     * Metodo equals de la clase Evento
      * @param obj
-     * @return
+     * @return boolean
      */
     @Override
     public boolean equals(Object obj) {
@@ -119,8 +119,8 @@ public class Evento {
     }
 
     /**
-     *
-     * @return
+     * Metodo haschode de objetos evento
+     * @return hascode
      */
     @Override
     public int hashCode() {

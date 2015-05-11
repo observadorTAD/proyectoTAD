@@ -11,49 +11,49 @@ import modelo.entidades.Persona;
 public interface IPersonaController {
 
     /**
-     *
+     * Método que añade a un correo electronico una serie de eventos
      * @param correo
      * @param eventos
      */
     void addEventos(String correo, List<Evento> eventos);
 
     /**
-     *
+     * Metodo que devuelve todos los eventos vinculados a un correo electrónico
      * @param correo
-     * @return
+     * @return eventos
      */
     List<Evento> getEventos(String correo);
 
     /**
-     *
+     * Método que devuelve un objeto de tipo usuario de la persistencia a partir de un correo electrónico.
      * @param correo
      * @return
      */
     Persona getUsuario(String correo);
 
     /**
-     *
+     * Indica si un correo está registrado como artista
      * @param correo
-     * @return
+     * @return true/false
      */
     boolean isArtista(String correo);
 
     /**
-     *
+     * Elimina un usuario de la persistencia
      * @param correo
      */
     void removeUsuario(String correo);
 
     /**
-     *
+     * Indica si una combinacion de usuario y contraseña es valida
      * @param correo
      * @param password
-     * @return
+     * @return true/false
      */
     boolean login(String correo, String password);
 
     /**
-     *
+     * Actualiza los valores en persistencia de un usuario
      * @param correo
      * @param password
      * @param nombreUsuario

@@ -25,7 +25,7 @@ public class MongoDBJDBC {
     public MongoDBJDBC() {
         try {
             mongoClient = getMongoClient(); // Now connect to your databases
-            db = mongoClient.getDB("myEvent");
+            db = mongoClient.getDB("db");
         } catch (Exception e) {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
         }

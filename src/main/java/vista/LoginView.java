@@ -71,6 +71,8 @@ public class LoginView extends VerticalLayout implements View {
                 } else if (usuarioController.login(correo.getValue(), password.getValue())) {
                     Label aux = (Label) VaadinSession.getCurrent().getAttribute("correo");
                     aux.setValue(correo.getValue());
+                    Label aux2 = (Label) VaadinSession.getCurrent().getAttribute("artista");
+                    aux2.setValue("false");
 
                     UI.getCurrent().getNavigator().navigateTo(MainView.NAME);
 

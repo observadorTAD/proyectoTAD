@@ -47,10 +47,10 @@ public class MainView extends VerticalLayout implements View {
                         String caption = tabsheet.getTab(tab).getCaption();
                         switch (caption) {
                             case "Principal":
-                                menuContent.setSecondComponent(new PrincipalUserView(usuario));
+                                menuContent.setSecondComponent(new PrincipalUserView(usuario, artista));
                                 break;
                             case "Buscar eventos":
-                                menuContent.setSecondComponent(new AddEventView(usuario));
+                                menuContent.setSecondComponent(new AddEventView(usuario, artista));
                                 break;
                             case "Crear evento":
                                 menuContent.setSecondComponent(new CreateEventView(usuario, artista));
@@ -98,7 +98,7 @@ public class MainView extends VerticalLayout implements View {
             }
             usuario = controller.getUsuario(aux.getValue());
             artista = aux2.getValue().equals("true");
-            menuContent.setSecondComponent(new PrincipalUserView(usuario));
+            menuContent.setSecondComponent(new PrincipalUserView(usuario, artista));
         }
     }
 }

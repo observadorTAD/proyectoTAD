@@ -12,6 +12,8 @@ import com.vaadin.ui.HorizontalSplitPanel;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Table;
 import com.vaadin.ui.VerticalLayout;
+import controlador.ArtistaController;
+import controlador.IPersonaController;
 import controlador.UsuarioController;
 import java.util.List;
 import modelo.entidades.Evento;
@@ -33,14 +35,20 @@ public class PrincipalUserView extends VerticalLayout implements View {
     private final Label precio = new Label();
     private final VerticalLayout layoutEventos = new VerticalLayout();
     private final VerticalLayout descripcionEvento = new VerticalLayout();
-    private final UsuarioController usuarioController = new UsuarioController();
+    private final IPersonaController controller;
 
     /**
      * Constructor de la vista
      * @param usuario Usuario actual
+     * @param artistaB Boolean para determinar el controlador a utilizar
      */
-    public PrincipalUserView(Persona usuario) {
-        final List<Evento> listaEventoUsuario = usuarioController.getEventos(usuario.getCorreo());
+    public PrincipalUserView(Persona usuario, boolean artistaB) {
+        if(artistaB){
+        controller = new ArtistaController();
+        }else{
+            controller = new UsuarioController();
+        }
+        final List<Evento> listaEventoUsuario = controller.getEventos(usuario.getCorreo());
         //Establecer características a la tabla con todos los eventos del usuario
         misEventos.addContainerProperty("Título", String.class, null);
         misEventos.addContainerProperty("Artista", String.class, null);

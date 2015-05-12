@@ -15,7 +15,9 @@ import com.vaadin.ui.Label;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.Table;
 import com.vaadin.ui.VerticalLayout;
+import controlador.ArtistaController;
 import controlador.EventoController;
+import controlador.IPersonaController;
 import controlador.UsuarioController;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -43,15 +45,21 @@ public class AddEventView extends VerticalLayout implements View {
     private final VerticalLayout layoutEventos = new VerticalLayout();
     private final VerticalLayout descripcionEvento = new VerticalLayout();
     private final EventoController eventoController = new EventoController();
-    private final UsuarioController usuarioController = new UsuarioController();
+    private final IPersonaController controller;
 
     /**
      * Constructor de la vista. 
      * @param usuario
+     * @param artistaB Boolean para determinar el controlador a utilizar
      */
-    public AddEventView(final Persona usuario) {
+    public AddEventView(final Persona usuario, boolean artistaB) {
+        if(artistaB){
+        controller = new ArtistaController();
+        }else{
+            controller = new UsuarioController();
+        }
         final List<Evento> listaEventos = eventoController.getEventos();
-        List<Evento> listaEventoUsuario = usuarioController.getEventos(usuario.getCorreo());
+        List<Evento> listaEventoUsuario = controller.getEventos(usuario.getCorreo());
 
         //Establecer características a la tabla con todos los eventos
         todosEventos.addContainerProperty("Título", String.class, null);
@@ -164,7 +172,7 @@ public class AddEventView extends VerticalLayout implements View {
                 for (Object miListaEvento : miListaEventos) {
                     miListaDefinitiva.add(listaEventos.get((int) miListaEvento));
                 }
-                usuarioController.addEventos(usuario.getCorreo(), miListaDefinitiva);
+                controller.addEventos(usuario.getCorreo(), miListaDefinitiva);
                 Notification.show("Lista actualizada con éxito");
             }
         });

@@ -1,0 +1,2 @@
+Ejecutar el archivo data_base_import.bat en la carpeta bin de mongo, donde están sus ejecutables.
+El script borrará cualquier otra base de datos llamada db y creará una nueva con los datos de nuestra app.
